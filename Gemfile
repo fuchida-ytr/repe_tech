@@ -53,7 +53,7 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # original
-# user registration/login
+# admin/user registration/login
 gem 'devise'
 
 # deploy
