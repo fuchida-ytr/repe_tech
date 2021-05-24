@@ -1,0 +1,12 @@
+<h1>管理者一覧</h1>
+
+<% @admins.each do |admin| %>
+    <%= "#{admin.name} #{admin.email}" %>
+<% end %>  
+
+
+<h1>ユーザー一覧</h1>
+
+<% @users.each do |user| %>
+    <%= "#{user.name} #{user.email}" %>
+<% end %>  
