@@ -1,0 +1,22 @@
+
+<h1><%= @course.title %></h1>
+
+<hr>
+
+<%= form_for @course do |course| %>
+
+    <div class="field">
+        <%= course.label :title %><br />
+        <%= course.text_field :title %>
+    </div>
+
+    <div class="field">
+        <%= course.label :caption %><br />
+        <%= course.text_field :caption %>
+    </div>
+
+    <div class="actions">
+        <%= course.submit "更新" %>
+    </div>
+
+<% end %>
