@@ -1,8 +1,25 @@
 <h1>コース一覧</h1>
 
-<% @courses.each do |course| %>
-    <%= "#{course.title} / #{course.caption}" %><br>
-<% end %>  
+
+<table>
+    
+    <tr>
+        <th>title</th> 
+        <th>caption</th> 
+        <th>edit</th>
+        <th>delete</th>
+    </tr>
+
+    <% @courses.each do |course| %>
+        <tr>
+            <td><%= link_to course.title, course_path(course) %></td> 
+            <td><%= course.caption %></td> 
+            <td><%= link_to 'edit', edit_course_path(course) %></td> 
+            <td><%= link_to "delete", course_path(course), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>   
+        </tr>
+    <% end %>
+
+</table>
 
 <hr>
 
