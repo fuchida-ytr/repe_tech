@@ -1,0 +1,25 @@
+<h1>コース一覧</h1>
+
+<% @courses.each do |course| %>
+    <%= "#{course.title} / #{course.caption}" %><br>
+<% end %>  
+
+<hr>
+
+<%= form_for @course do |course| %>
+
+    <div class="field">
+        <%= course.label :title %><br />
+        <%= course.text_field :title %>
+    </div>
+
+    <div class="field">
+        <%= course.label :caption %><br />
+        <%= course.text_field :caption %>
+    </div>
+
+    <div class="actions">
+        <%= course.submit "作成" %>
+    </div>
+
+<% end %>
