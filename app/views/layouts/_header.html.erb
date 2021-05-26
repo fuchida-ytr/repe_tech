@@ -1,14 +1,62 @@
+
 <header>
-    <% if admin_signed_in? %>
-        <%= current_admin.name %>
-        <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, "data-confirm" => "本当にログアウトしますか？" %>
-    <% elsif user_signed_in? %>
-        <%= current_user.name %>
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, "data-confirm" => "本当にログアウトしますか？" %>
-    <% else %>
-    <p2>一般</p2>
-        <%= link_to "管理者登録", new_admin_registration_path %><br />
-        <%= link_to "ユーザー登録", new_user_registration_path %><br />
-    <% end %>
-        <%= link_to "コース一覧", courses_path %><br />
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">RepeTech</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+
+                    <% if admin_signed_in? %>
+
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><%= current_admin.name %></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, "data-confirm" => "本当にログアウトしますか？", class: 'nav-link' %>
+                        </li>                                            
+                        
+                    <% elsif user_signed_in? %>
+
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><%= current_user.name %></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, "data-confirm" => "本当にログアウトしますか？", class: 'nav-link' %>
+                        </li>    
+
+                    <% else %>
+
+                        <li class="nav-item">
+                            <%= link_to "管理者登録", new_admin_registration_path, class: 'nav-link' %>
+                        </li>
+
+                        <li class="nav-item">
+                            <%= link_to "ユーザー登録", new_user_registration_path, class: 'nav-link' %>
+                        </li>
+K
+                    <% end %>
+
+                    <li class="nav-item">
+                        <%= link_to "コース一覧", courses_path, class: 'nav-link' %>
+                    </li>
+                    
+
+                </ul>
+                
+
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="検索" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 </header>

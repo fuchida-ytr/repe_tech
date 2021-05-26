@@ -1,25 +1,89 @@
-<h1>コース一覧</h1>
+<style>
+    .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    }
+
+    @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+    }
+</style>
+
+<main>
+
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">アルバムページのサンプル</h1>
+        <p class="lead text-muted">内容や作成者など、以下のコレクションに関する簡単な説明文を書きましょう。なるべく短く、わかりやすい文にしましょう。しかし短すぎると、友達は見てくれないかもしれません。</p>
+        <p>
+          <a href="#" class="btn btn-primary my-2">メインアクション</a>
+          <a href="#" class="btn btn-secondary my-2">サブアクション</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+        <h5>コース一覧</h5>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
 
-<table>
-    
-    <tr>
-        <th>title</th> 
-        <th>caption</th> 
-        <th>edit</th>
-        <th>delete</th>
-    </tr>
 
-    <% @courses.each do |course| %>
-        <tr>
-            <td><%= link_to course.title, course_path(course) %></td> 
-            <td><%= course.caption %></td> 
-            <td><%= link_to 'edit', edit_course_path(course) %></td> 
-            <td><%= link_to "delete", course_path(course), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>   
-        </tr>
-    <% end %>
+        <% @courses.each do |course| %>
 
-</table>
+            <div class="col">
+                <div class="card shadow-sm">
+
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+                    <div class="card-body">
+                        <p><%= link_to course.title, course_path(course) %></p>
+                        <p class="card-text"><%= course.caption %></p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to 'edit', edit_course_path(course) %></button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "delete", course_path(course), method: :delete, "data-confirm" => "本当に削除しますか？" %></button>
+                            </div>
+                            <small class="text-muted">9レッスン</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+
+      </div>
+
+      
+    </div>
+  </div>
+
+</main>
+
+
+
+
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+      
+
+
+
+
+
+
+
+
+
+
+
 
 <hr>
 
