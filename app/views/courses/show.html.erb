@@ -4,3 +4,31 @@
 <hr>
 
 <p><%= @course.caption %></p>
+
+<hr>
+
+
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>chapter</th>
+            <th>link</th>
+        </tr>
+    </thead>
+
+    <% @chapters.each do |chapter| %>
+        <% next unless chapter.id %>
+        <tr>
+            <td><%= link_to chapter.title, course_chapter_path(@course, chapter) %></td>
+            <td>36</td>
+        </tr>
+    <% end %>
+
+    <tr>
+        <%= form_with model: [@course, @chapter] do |chapter| %>
+            <td><%= chapter.text_field :title %></td>
+            <td><%= chapter.submit "作成" %></td>
+        <% end %>
+    </tr>
+</table>

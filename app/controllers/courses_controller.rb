@@ -13,6 +13,8 @@ class CoursesController < ApplicationController
 
     def show
         @course = Course.find(params[:id])
+        @chapter = @course.chapters.build
+        @chapters = @course.chapters
     end
 
     def edit
@@ -37,9 +39,9 @@ class CoursesController < ApplicationController
     private
   
     def course_params
-      params.require(:course).permit(
-        :title, :caption
-      )
+        params.require(:course).permit(
+            :title, :caption
+        )
     end
 
 end

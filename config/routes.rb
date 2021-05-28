@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  # TODO: 不必要なものは削除、resources等
+
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -12,6 +15,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :courses # index, create
-
+  resources :courses do
+    resources :chapters
+  end
+  
 end
