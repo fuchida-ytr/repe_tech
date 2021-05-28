@@ -1,5 +1,42 @@
 
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+
+    <li class="breadcrumb-item">
+        <%= link_to @chapter.course.title, course_path(@chapter.course) %>
+    </li>
+
+    <li class="breadcrumb-item active" aria-current="page">
+        <%= link_to @chapter.title, course_chapter_path(@chapter.course, @chapter) %>
+    </li>
+  </ol>
+</nav>
+
 <h1><%= @chapter.title %></h1>
 
 <hr>
 
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>section</th>
+            <th>edit</th>
+            <th>delete</th>
+        </tr>
+    </thead>
+
+    <% @chapter.sections.each do |section| %>
+        <% next unless section.id %>
+        <tr>
+            <td><%= link_to section.title, chapter_section_path(@chapter, section) %></td>
+            <td><%#= link_to 'edit', edit_course_section_path(@course, section) %></td>
+            <td><%#= link_to "delete", course_section_path(@course, section), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+        </tr>
+    <% end %>
+
+</table>
+
+
+<hr>
+
+<%= link_to 'new', new_chapter_section_path(@chapter) %>

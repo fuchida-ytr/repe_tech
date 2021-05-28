@@ -1,0 +1,24 @@
+
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+
+    <li class="breadcrumb-item">
+        <%= link_to @section.chapter.course.title, course_path(@section.chapter.course) %>
+    </li>
+
+    <li class="breadcrumb-item">
+        <%= link_to @section.chapter.title, course_chapter_path(@section.chapter.course, @section.chapter) %>
+    </li>
+
+    <li class="breadcrumb-item active" aria-current="page">
+        <%= @section.title %>
+    </li>
+  </ol>
+</nav>
+
+<h1><%= @section.title %></h1>
+
+<hr>
+
+<%= @section.content %>
