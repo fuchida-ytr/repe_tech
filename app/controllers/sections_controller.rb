@@ -16,6 +16,27 @@ class SectionsController < ApplicationController
         @section = Section.find(params[:id])
     end
 
+    def edit
+        @chapter = Chapter.find(params[:chapter_id])
+        @section = Section.find(params[:id])
+    end
+
+    def update
+        @section = Section.find(params[:id])
+
+        if @section.update(section_params)
+            redirect_to chapter_section_path(@section.chapter_id, @section), notice: '更新しました'
+        else
+            render 'show'
+        end
+    end
+
+    def destroy
+        @section = Section.find(params[:id])
+        @section.destroy
+        redirect_to course_chapter_path(@section.chapter.course_id, @section.chapter), notice: '削除しました'
+    end
+
     private
   
     def section_params
