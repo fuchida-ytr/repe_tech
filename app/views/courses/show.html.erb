@@ -13,7 +13,8 @@
     <thead class="thead-dark">
         <tr>
             <th>chapter</th>
-            <th>link</th>
+            <th>edit</th>
+            <th>delete</th>
         </tr>
     </thead>
 
@@ -21,7 +22,8 @@
         <% next unless chapter.id %>
         <tr>
             <td><%= link_to chapter.title, course_chapter_path(@course, chapter) %></td>
-            <td>36</td>
+            <td><%= link_to 'edit', edit_course_chapter_path(@course, chapter) %></td>
+            <td><%= link_to "delete", course_chapter_path(@course, chapter), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
         </tr>
     <% end %>
 

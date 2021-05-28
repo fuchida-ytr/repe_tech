@@ -10,6 +10,27 @@ class ChaptersController < ApplicationController
         @chapter = Chapter.find(params[:id])
     end
 
+    def edit
+        @chapter = Chapter.find(params[:id])
+        @course = @chapter.course
+    end
+
+    def update
+        @chapter = Chapter.find(params[:id])
+
+        if @chapter.update(chapter_params)
+            redirect_to course_path(@chapter.course_id), notice: '更新しました'
+        else
+            render 'show'
+        end
+    end
+
+    def destroy
+        @chapter = Chapter.find(params[:id])
+        @chapter.destroy
+        redirect_to course_path(@chapter.course_id), notice: '削除しました'
+    end
+
     private
   
     def chapter_params
