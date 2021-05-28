@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   # TODO: 不必要なものは削除、resources等
+  # TODO: アルファベット順にソート
 
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
@@ -19,4 +20,7 @@ Rails.application.routes.draw do
     resources :chapters
   end
   
+  resources :chapters, only: [] do
+    resources :sections
+  end
 end

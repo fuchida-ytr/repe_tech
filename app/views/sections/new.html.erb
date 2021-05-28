@@ -1,0 +1,21 @@
+<h1>new section</h1>
+
+<hr>
+
+<%= form_with model: [@chapter, @section] do |section| %>
+
+    <div class="field">
+        <%= section.label :title %><br />
+        <%= section.text_field :title %>
+    </div>
+
+        <div class="field">
+        <%= section.label :content %><br />
+        <%= section.text_area :content %>
+    </div>
+
+    <div class="actions">
+        <%= section.submit "作成" %>
+    </div>
+
+<% end %>
