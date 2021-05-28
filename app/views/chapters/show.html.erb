@@ -29,8 +29,8 @@
         <% next unless section.id %>
         <tr>
             <td><%= link_to section.title, chapter_section_path(@chapter, section) %></td>
-            <td><%#= link_to 'edit', edit_course_section_path(@course, section) %></td>
-            <td><%#= link_to "delete", course_section_path(@course, section), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+            <td><%= link_to 'edit', edit_chapter_section_path(@chapter, section) %></td>
+            <td><%= link_to "delete", chapter_section_path(@chapter, section), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
         </tr>
     <% end %>
 
