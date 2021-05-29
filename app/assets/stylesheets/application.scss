@@ -1,0 +1,141 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @charset "utf-8";
+/* --------------------------------------------------------
+	reset
+-------------------------------------------------------- */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+	margin: 0;
+	padding: 0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style: normal;
+}
+
+body {
+	color: #333333;
+	font-size: 100%;
+	font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN",verdana,"メイリオ", Meiryo, sans-serif;
+	line-height: 1.8;
+	background: url(null) fixed;
+	background-color: #fff;
+}
+
+html {
+	overflow-y: scroll;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary { 
+	display:block;
+}
+img {
+	width:100%;
+	max-width: 100%;
+	height: auto;
+	border: 0;
+	vertical-align: bottom;
+}
+ul, ol {
+	list-style: none;
+}
+table {
+	border-spacing: 0;
+	empty-cells: show;
+}
+a,a:link,a:visited,a:hover,a:active{
+	color:#054691;
+	text-decoration:none;
+}
+
+/* --------------------------------------------------------
+	container
+-------------------------------------------------------- */
+
+.container {
+	width: 90%;
+	margin: 30px auto;
+}
+
+/* --------------------------------------------------------
+	card
+-------------------------------------------------------- */
+
+.cardContainer {
+	display: flex;
+	flex-flow: row wrap;
+	margin: 50px auto !important;
+    width: 90%;
+}
+.cardBox {
+	width: calc(33.3% - 20px);
+	margin: 0 10px;
+}
+@media screen and (max-width: 768px) {
+	.cardBox {
+		width: 100%;
+		margin-bottom: 50px;
+	}
+	.cardBox:last-child {
+		margin-bottom: 20px;
+	}
+}
+
+.cardBox {
+	position: relative;
+	padding: 20px;
+    margin: 5% 1%;
+	border: 2px solid #333333;
+	border-radius: 5px;
+	box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+@media screen and (max-width: 768px) {
+	.cardBox {
+		padding: 50px 20px 40px;
+	}
+}
+
+.cardBox img {
+	display: block;
+	max-width: 120px;
+	margin: 0 auto 30px;
+}
+
+.cardTtl {
+	text-align: center;
+	font-size: 130%;
+	font-weight: bold;
+	line-height: 1.5;
+	margin-bottom: 30px;
+}
+
+
+.cardText p {
+	margin-bottom: 20px;
+}
+@media screen and (max-width: 768px) {
+	.cardText {
+		margin-bottom: 50px;
+	}
+}
