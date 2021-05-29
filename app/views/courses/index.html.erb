@@ -1,96 +1,98 @@
-<style>
-    .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    }
 
-    @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-    }
-    }
-</style>
 
 <main>
 
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">アルバムページのサンプル</h1>
-        <p class="lead text-muted">内容や作成者など、以下のコレクションに関する簡単な説明文を書きましょう。なるべく短く、わかりやすい文にしましょう。しかし短すぎると、友達は見てくれないかもしれません。</p>
-        <p>
-          <a href="#" class="btn btn-primary my-2">メインアクション</a>
-          <a href="#" class="btn btn-secondary my-2">サブアクション</a>
-        </p>
+  <section class="bg-dark py-5">
+      <div class="container px-4 px-lg-5 my-5">
+          <div class="text-center text-white">
+              <h2 class="display-4 fw-bolder">コース 一覧</h2>
+              <p class="lead fw-normal text-white-50 mb-0">Go to the next level of technology</p>
+          </div>
       </div>
-    </div>
   </section>
 
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-        <h5>コース一覧</h5>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
 
+  <div class="container">
 
-        <% @courses.each do |course| %>
+    <div class="row cardContainer d-flex justify-content-between">
 
-            <div class="col">
-                <div class="card shadow-sm">
+      <% @courses.each do |course| %>
+        <div class="cardBox col-sm-12 col-lg-3 col-sm-4">
+          <div class="cardInner">
+            <h2 class="cardTtl"><%= link_to course.title, course_path(course) %></h2>
+          </div>
 
-                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+          <%#= image_tag '02.png' %>
 
-                    <div class="card-body">
-                        <p><%= link_to course.title, course_path(course) %></p>
-                        <p class="card-text"><%= course.caption %></p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to 'edit', edit_course_path(course) %></button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "delete", course_path(course), method: :delete, "data-confirm" => "本当に削除しますか？" %></button>
-                            </div>
-                            <small class="text-muted">9レッスン</small>
+          <div class="cardText">
+            <p><%= course.caption %></p>
+          </div>
+          <div class="cardLink">
+            <p><%= link_to 'edit', edit_course_path(course) %> |
+            <%= link_to "delete", course_path(course), method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-3 col-sm-4">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">new</button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">新規コース作成</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+
+              <div class="modal-body">
+                <%= form_with model: @course do |course| %>
+                    <div class="cardBox col-sm-12 col-lg-3 col-sm-4">
+                        <div class="cardInner">
+                            <h2 class="cardTtl">
+                                <%= course.text_field :title, class: 'form-control', placeholder: 'タイトル' %>
+                            </h2>
+                        </div>
+
+                        <%#= image_tag '02.png' %>
+
+                        <div class="cardText">
+                            <p><%= course.text_area :caption, class: 'form-control', placeholder: '説明' %></p>
                         </div>
                     </div>
-                </div>
-            </div>
-        <% end %>
+                    <div class="modal-footer">
+                        <%= course.submit "作成", class: 'btn btn-primary' %>
+                    </div>
+                <% end %>
+              </div><!-- /.modal-footer -->
 
+
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
       </div>
-
-      
     </div>
   </div>
-
 </main>
 
 
 
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
     
 
 
 <hr>
 
-<%= form_with model: @course do |course| %>
 
-    <div class="field">
-        <%= course.label :title %><br />
-        <%= course.text_field :title %>
-    </div>
 
-    <div class="field">
-        <%= course.label :caption %><br />
-        <%= course.text_field :caption %>
-    </div>
 
-    <div class="actions">
-        <%= course.submit "作成" %>
-    </div>
-
-<% end %>
+<script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
