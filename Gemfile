@@ -55,6 +55,10 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # original
 # admin/user registration/login
 gem 'devise'
+# マークダウン形式で表示するためのgem
+gem 'redcarpet', '~> 2.3.0'
+# シンタックスハイライトに対応させるためのgem
+gem 'coderay'
 
 # deploy
 gem 'json'

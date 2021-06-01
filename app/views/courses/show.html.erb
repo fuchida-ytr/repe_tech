@@ -7,30 +7,40 @@
 
 <hr>
 
-
-
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th>chapter</th>
-            <th>edit</th>
-            <th>delete</th>
-        </tr>
-    </thead>
+<div class="accordion" id="accordion-4">
 
     <% @chapters.each do |chapter| %>
         <% next unless chapter.id %>
-        <tr>
-            <td><%= link_to chapter.title, course_chapter_path(@course, chapter) %></td>
-            <td><%= link_to 'edit', edit_course_chapter_path(@course, chapter) %></td>
-            <td><%= link_to "delete", course_chapter_path(@course, chapter), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-        </tr>
+
+        <div class="card">
+            <div class="card-header" id="header-<%= chapter.id %>">
+                <button class="btn btn-link" type="button"
+                data-toggle="collapse" data-target="#card-<%= chapter.id %>"
+                aria-expanded="true" aria-controls="card-<%= chapter.id %>">
+                <%= chapter.title %>
+                </button>
+                <%= link_to 'show', course_chapter_path(@course, chapter) %>
+                <%= link_to 'edit', edit_course_chapter_path(@course, chapter) %>
+                <%= link_to 'delete', course_chapter_path(@course, chapter), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+            </div>
+
+            <div id="card-<%= chapter.id %>" class="collapse"
+            aria-labelledby="header-<%= chapter.id %>" data-parent="#accordion-4">
+            <div class="card-body">
+            Card A
+            </div>
+            </div>
+        </div>
     <% end %>
 
-    <tr>
+     <div class="card">
         <%= form_with model: [@course, @chapter] do |chapter| %>
-            <td><%= chapter.text_field :title %></td>
-            <td><%= chapter.submit "作成" %></td>
+            <div class="card-header">
+                <button class="btn btn-link" type="button">
+                <%= chapter.text_field :title %>
+                </button>
+                <%= chapter.submit "作成" %>
+            </div>
         <% end %>
-    </tr>
-</table>
+    </div>
+</div>

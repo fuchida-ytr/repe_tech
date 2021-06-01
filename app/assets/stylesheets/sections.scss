@@ -1,3 +1,81 @@
 // Place all the styles related to the sections controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.new-view {
+    width: 90%;
+    margin: 0 auto;
+
+    nav a:hover {
+        text-decoration: none;
+        color: black;
+    }
+    h2 {
+        font-size: 50px;
+        font-weight: 300;
+        color: black;
+        letter-spacing: 10px;
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+    
+    .field, .actions {
+        margin: 20px;
+    }
+    .title_field {
+        width: 70vw;
+        height: 40px;
+        padding: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        font-size: 20px;
+    }
+    .content_field {
+        width: 70vw;
+        height: 300px;
+        padding: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+    }
+    .create-btn {
+        display: inline-block;
+        padding: 0.5em 1em;
+        text-decoration: none;
+        color: #67c5ff;
+        border: dashed 1px #67c5ff;
+        background: #f2fcff;
+        border-radius: 3px;
+        transition: .4s;
+        font-size: 15px;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+    .create-btn:hover {
+        background: #cbedff;
+        color: #FFF;
+    }
+    
+    .actions {
+        margin-bottom: 50px;
+    }
+    @media screen and (max-width: 375px) {
+        h2 {
+            font-size: 40px;
+        }
+    }
+
+}
+
+
+.show-view {
+
+    .section-content {
+        width: 94%;
+        margin-bottom: 70px;
+    }
+
+    .CodeRay {
+        background-color: #364549;
+        color: #e3e3e3;
+    }
+}

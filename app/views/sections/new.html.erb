@@ -1,21 +1,43 @@
-<h1>new section</h1>
 
-<hr>
+<%= stylesheet_link_tag "sections", :media => "all" %>
 
-<%= form_with model: [@chapter, @section] do |section| %>
+<div class="container">
+    <div class="row new-view">
 
-    <div class="field">
-        <%= section.label :title %><br />
-        <%= section.text_field :title %>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">
+                    <%= link_to @chapter.course.title, course_path(@chapter.course) %>
+                </li>
+
+                <li class="breadcrumb-item active" aria-current="page">
+                    <%= link_to @chapter.title, course_chapter_path(@chapter.course, @chapter) %>
+                </li>
+
+                <li class="breadcrumb-item active" aria-current="page">new</li>
+            </ol>
+        </nav>
+
+        <h2>new section</h2>
+        <hr>
+
+        <%= form_with model: [@chapter, @section] do |section| %>
+
+            <div class="field">
+                <%= section.label :title %><br />
+                <%= section.text_field :title, class: 'title_field' %>
+            </div>
+
+            <div class="field">
+                <%= section.label :content %><br />
+                <%= section.text_area :content, class: 'content_field' %>
+            </div>
+
+            <div class="actions">
+                <%= section.submit '作成', class: "create-btn" %>
+            </div>
+        <% end %>
     </div>
+</div>
 
-        <div class="field">
-        <%= section.label :content %><br />
-        <%= section.text_area :content %>
-    </div>
-
-    <div class="actions">
-        <%= section.submit "作成" %>
-    </div>
-
-<% end %>
