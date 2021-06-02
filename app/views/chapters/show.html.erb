@@ -40,7 +40,39 @@
 
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2"><%= @chapter.title %></h1>
+
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group me-2">
+                    <a class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#editModal">編集</a>
+                    <%= link_to "削除", course_chapter_path(@chapter.course, @chapter), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-outline-secondary" %>
+                </div>
+            </div>
+
+            <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4><div class="modal-title" id="myModalLabel">チャプタータイトル 編集</div></h4>
+                        </div>
+                        <div class="modal-body">
+                            <%= form_with model: [@chapter.course, @chapter] do |chapter| %>
+                                <div class="input-group">
+                                    <%= chapter.text_field :title, class: "form-control" %>
+                                    <div class="input-group-append">
+                                        <%= chapter.submit "更新", class: "input-group-text" %>
+                                    </div>
+                                </div>
+                            <% end %>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        
 
         <div class="section-content">
             <table class="table">

@@ -1,98 +1,64 @@
 
+<%= stylesheet_link_tag "courses", :media => "all" %>
 
-<main>
+<div class="container-fluid">
+  <div class="row index-view">
 
-  <section class="bg-dark py-5">
-      <div class="container px-4 px-lg-5 my-5">
-          <div class="text-center text-white">
-              <h2 class="display-4 fw-bolder">コース 一覧</h2>
-              <p class="lead fw-normal text-white-50 mb-0">Go to the next level of technology</p>
-          </div>
+    <section>
+      <div class="text-center text-white">
+        <h2 class="display-4 fw-bolder">コース 一覧</h2>
+        <p class="lead fw-normal text-white-50 mb-0">Go to the next level of technology</p>
       </div>
-  </section>
+    </section>
 
-
-
-  <div class="container">
-
-    <div class="row cardContainer d-flex justify-content-between">
-
+    <ul class="d-flex  flex-wrap justify-content-around">
       <% @courses.each do |course| %>
-        <div class="cardBox col-sm-12 col-lg-3 col-sm-4">
-          <div class="cardInner">
-            <h2 class="cardTtl"><%= link_to course.title, course_path(course) %></h2>
-          </div>
-
-          <%#= image_tag '02.png' %>
-
-          <div class="cardText">
-            <p><%= course.caption %></p>
-          </div>
-          <div class="cardLink">
-            <p><%= link_to 'edit', edit_course_path(course) %> |
-            <%= link_to "delete", course_path(course), method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
-          </div>
-        </div>
+        <li>
+          <div><img src="http://3.1m.yt/TRDtJPn.png" alt="" /></div>
+          <h1><%= link_to course.title, course_path(course) %></h1>
+          <p><%= course.caption %></p>
+          <% if admin_signed_in? %>
+            <%= link_to 'edit', edit_course_path(course) %> |
+            <%= link_to "delete", course_path(course), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+          <% end %>
+        </li>
       <% end %>
+    </ul>
+
+    <div class="new-modal d-flex flex-row-reverse">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">new course</button>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">新規コース作成</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              <%= form_with model: @course do |course| %>
+                <ul>
+                  <li>
+                    <div><img src="http://3.1m.yt/TRDtJPn.png" alt="" /></div>
+                    <h1> <%= course.text_field :title, class: 'form-control', placeholder: 'タイトル' %></h1>
+                    <p><%= course.text_area :caption, class: 'form-control', placeholder: '説明' %></p>
+                  </li>
+                </ul>
+                <div class="modal-footer">
+                <%= course.submit "作成", class: 'btn btn-primary' %>
+                </div>
+              <% end %>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
     </div>
 
-    <hr>
 
-    <div class="row">
-        <div class="col-sm-12 col-lg-3 col-sm-4">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">new</button>
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-
-              <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">新規コース作成</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
-              </div>
-
-              <div class="modal-body">
-                <%= form_with model: @course do |course| %>
-                    <div class="cardBox col-sm-12 col-lg-3 col-sm-4">
-                        <div class="cardInner">
-                            <h2 class="cardTtl">
-                                <%= course.text_field :title, class: 'form-control', placeholder: 'タイトル' %>
-                            </h2>
-                        </div>
-
-                        <%#= image_tag '02.png' %>
-
-                        <div class="cardText">
-                            <p><%= course.text_area :caption, class: 'form-control', placeholder: '説明' %></p>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <%= course.submit "作成", class: 'btn btn-primary' %>
-                    </div>
-                <% end %>
-              </div><!-- /.modal-footer -->
-
-
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-      </div>
-    </div>
   </div>
-</main>
+</div>
 
-
-
-
-
-    
-
-
-<hr>
-
-
-
-
-<script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>

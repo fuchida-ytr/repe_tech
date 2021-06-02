@@ -35,6 +35,11 @@ body {
 	background-color: #fff;
 }
 
+button:focus {
+	outline: none;
+	box-shadow: none !important;
+  }
+
 html {
 	overflow-y: scroll;
 }

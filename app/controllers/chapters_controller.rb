@@ -10,16 +10,11 @@ class ChaptersController < ApplicationController
         @chapter = Chapter.find(params[:id])
     end
 
-    def edit
-        @chapter = Chapter.find(params[:id])
-        @course = @chapter.course
-    end
-
     def update
         @chapter = Chapter.find(params[:id])
 
         if @chapter.update(chapter_params)
-            redirect_to course_path(@chapter.course_id), notice: '更新しました'
+            redirect_to course_chapter_path(@chapter.course, @chapter), notice: '更新しました'
         else
             render 'show'
         end
