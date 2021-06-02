@@ -1,3 +1,146 @@
 // Place all the styles related to the courses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.index-view {
+    @import url(https://fonts.googleapis.com/css?family=Varela+Round);
+
+    background: #bcdee7;
+    font-family: "Montserrat", sans-serif;
+
+    section {
+        margin-top: 50px;
+    }
+
+    ul {
+        width: 90%;
+        margin: 0 auto 100px;
+
+        li {
+            min-height: 320px;
+            width: 30%;
+            max-width: 240px;
+            background: #fff;
+            display: inline-block;
+            box-shadow: 0 5px 30px 0 rgba(0,0,0,0.3);
+            border-radius: 7px;
+            text-align: center;
+            padding: 60px 10px 0;
+            margin: 60px 10px 0;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 2em;
+            background: #eee;
+            box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.06);
+
+            img {
+                width: 100%;
+            }
+        }
+        h1 {
+            font-family: "Varela Round", sans-serif;
+            font-size: 24px;
+            margin-bottom: .6em;
+            color: #FF5722;
+        }
+        p {
+            color: rgba(0,0,0,0.5);
+            font-size: .8em;
+            margin-bottom: 2em;
+        }      
+        a {
+            text-decoration: none;
+            color: #FF5722;
+            letter-spacing: .2em;
+            font-size: .8em;
+        }
+    }
+    .new-modal {
+        padding-right: 150px;
+        margin-bottom: 100px;
+
+        .modal-body {
+            text-align: center;
+            ul {
+                padding: 0;
+                margin: 0 auto 50px;
+            }
+            li {
+                width: 240px;
+                height: 320px;
+                margin-top: 50px;
+            }
+        }
+    }
+}
+
+.show-view {
+
+    section {
+        background: #bcdee7;
+    }
+    main {
+        width: 80%;
+        margin: 50px auto;
+    }
+    .chapter-list {
+        padding: 0;
+        font: 14px/1.6 'arial narrow', sans-serif;
+        width: 60%;
+        margin: 0 auto;
+        list-style: none;
+
+        .chapter-list-title {
+            font-weight: bold;
+            letter-spacing: .1em;
+            font-size: 1.125rem;
+            margin-bottom: 0;
+        }
+
+        .nav-item {
+            min-height: 70px;
+            position: relative;
+            padding: 5px 5px 0px 10px;
+            margin-bottom:5px;
+            border-left: solid 5px #5c9ee7;
+            background: #f1f8ff;
+            color: #5c9ee7;
+            font-weight: bold;
+            -webkit-box-shadow:1px 1px 2px rgba(0, 0, 0, 0.1) ;
+            -moz-box-shadow:1px 1px 2px rgba(0, 0, 0, 0.1) ;
+            box-shadow:1px 1px 2px rgba(0, 0, 0, 0.1) ;
+
+            .nav-headline {
+                min-height: 70px;
+            }
+            .nav-link:hover {
+                color: #F6A38B;
+            }
+            button {
+                flex: auto;
+                i {
+                    float: right;
+                    padding-right: 10px;
+                }
+            }
+            .btn-link:hover {
+                color: #F6A38B;
+            }
+        }
+        .section-item {
+            height: 50px;
+            position:relative;
+            padding: 0 0 0 20px;
+            margin: 7px 0 7px 0px;
+            font-weight: bold;
+            font-size:14px;
+            line-height: 30px;
+            border-bottom: dashed 1px #F6A38B;
+            background-color: white;
+        }
+    }
+}
