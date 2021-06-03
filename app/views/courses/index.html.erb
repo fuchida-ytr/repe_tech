@@ -14,7 +14,7 @@
     <ul class="d-flex  flex-wrap justify-content-around">
       <% @courses.each do |course| %>
         <li>
-          <div><img src="http://3.1m.yt/TRDtJPn.png" alt="" /></div>
+          <div><%= attachment_image_tag course, :image %></div>
           <h1><%= link_to course.title, course_path(course) %></h1>
           <p><%= course.caption %></p>
           <% if admin_signed_in? %>
@@ -43,7 +43,14 @@
               <%= form_with model: @course do |course| %>
                 <ul>
                   <li>
-                    <div><img src="http://3.1m.yt/TRDtJPn.png" alt="" /></div>
+                    <div>
+                     <label class="image-label" for="course_image">
+                        <div class="img-box">
+                          <img class="preview-course-image" >
+                        </div>
+                      </label>
+                      <%= course.attachment_field :image, id: 'course_image' %>
+                    </div>
                     <h1> <%= course.text_field :title, class: 'form-control', placeholder: 'タイトル' %></h1>
                     <p><%= course.text_area :caption, class: 'form-control', placeholder: '説明' %></p>
                   </li>
