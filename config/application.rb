@@ -32,6 +32,14 @@ module RepeTech
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    config.generators do |g|
+      g.test_framework :rspec,
+        fixtures: true, # テストデータベースにレコードを作成するファイルの作成
+        view_specs: false, # false はビュースペックを作成しないことを指定。代わりに フィーチャスペック で UI をテスト
+        helper_specs: false,
+        routing_specs: false 
+		end 
+
     # Don't generate system test files.
     config.generators.system_tests = nil
   end
