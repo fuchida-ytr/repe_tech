@@ -1,22 +1,40 @@
+<%= stylesheet_link_tag "courses", :media => "all" %>
 
-<h1><%= @course.title %></h1>
+<div class="container-fluid">
+    <div class="row index-view">
 
-<hr>
+      <div class="new-modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
 
-<%= form_for @course do |course| %>
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">コース編集</h5>
+            </div>
 
-    <div class="field">
-        <%= course.label :title %><br />
-        <%= course.text_field :title %>
+            <div class="modal-body">
+              <%= form_with model: @course do |course| %>
+                <ul>
+                  <li>
+                    <div>
+                     <label class="image-label" for="course_image">
+                        <div class="img-box">
+                          <%= attachment_image_tag @course, :image, class: "preview-course-image" %>
+                        </div>
+                      </label>
+                      <%= course.attachment_field :image, id: 'course_image' %>
+                    </div>
+                    <h1> <%= course.text_field :title, class: 'form-control', placeholder: 'タイトル' %></h1>
+                    <p><%= course.text_area :caption, class: 'form-control', placeholder: '説明' %></p>
+                  </li>
+                </ul>
+                <div class="modal-footer">
+                <%= course.submit "更新", class: 'btn btn-primary' %>
+                </div>
+              <% end %>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+
     </div>
-
-    <div class="field">
-        <%= course.label :caption %><br />
-        <%= course.text_field :caption %>
-    </div>
-
-    <div class="actions">
-        <%= course.submit "更新" %>
-    </div>
-
-<% end %>
+</div>

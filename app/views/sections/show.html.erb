@@ -9,9 +9,15 @@
         <ul class="nav flex-column">
 
           <% @section.chapter.course.chapters.each do |chapter| %>
-            <li class="nav-item">
-              <%= link_to chapter.title, course_chapter_path(chapter.course, chapter), class: "nav-link" %>
-            </li>
+            <% if @section.chapter.id == chapter.id %>
+                <li class="nav-item">
+                    <span class="nav-link current-page"> <%= chapter.title %></span>
+                </li>
+            <% else %>
+                <li class="nav-item">
+                    <%= link_to chapter.title, course_chapter_path(chapter.course, chapter), class: "nav-link" %>
+                </li>
+            <% end %>
           <% end %>
         </ul>
       </div>

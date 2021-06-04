@@ -62,7 +62,9 @@ gem 'devise'
 gem 'redcarpet', '~> 2.3.0'
 # シンタックスハイライトに対応させるためのgem
 gem 'coderay'
-
+# image upload
+gem 'refile', require: 'refile/rails', github: 'manfe/refile'
+gem 'refile-mini_magick'
 # deploy
 gem 'json'
 gem 'listen', '>= 3.0.5', '< 3.2'

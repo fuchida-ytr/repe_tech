@@ -35,6 +35,11 @@ body {
 	background-color: #fff;
 }
 
+button:focus {
+	outline: none;
+	box-shadow: none !important;
+  }
+
 html {
 	overflow-y: scroll;
 }
@@ -138,4 +143,12 @@ a,a:link,a:visited,a:hover,a:active{
 	.cardText {
 		margin-bottom: 50px;
 	}
+}
+
+.breadcrumb {
+	margin-top: 20px;
+	margin-bottom: 0 !important;
+}
+.current-page {
+	color: #6c757d;
 }

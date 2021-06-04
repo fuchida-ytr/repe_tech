@@ -1,46 +1,62 @@
 
-<h1><%= @course.title %></h1>
 
-<hr>
+<%= stylesheet_link_tag "courses", :media => "all" %>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
-<p><%= @course.caption %></p>
+<div class="container-fluid">
+    <div class="row show-view">
 
-<hr>
-
-<div class="accordion" id="accordion-4">
-
-    <% @chapters.each do |chapter| %>
-        <% next unless chapter.id %>
-
-        <div class="card">
-            <div class="card-header" id="header-<%= chapter.id %>">
-                <button class="btn btn-link" type="button"
-                data-toggle="collapse" data-target="#card-<%= chapter.id %>"
-                aria-expanded="true" aria-controls="card-<%= chapter.id %>">
-                <%= chapter.title %>
-                </button>
-                <%= link_to 'show', course_chapter_path(@course, chapter) %>
-                <%= link_to 'edit', edit_course_chapter_path(@course, chapter) %>
-                <%= link_to 'delete', course_chapter_path(@course, chapter), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder"><%= @course.title %></h1>
+                    <p class="lead fw-normal text-white-100 mb-0"><%= @course.caption %></p>
+                </div>
             </div>
+        </section>
 
-            <div id="card-<%= chapter.id %>" class="collapse"
-            aria-labelledby="header-<%= chapter.id %>" data-parent="#accordion-4">
-            <div class="card-body">
-            Card A
-            </div>
-            </div>
-        </div>
-    <% end %>
+        <main>
+        
+            <ul class="nav flex-column chapter-list">
+                <% @chapters.each do |chapter| %>
+                    <% next unless chapter.id %>
 
-     <div class="card">
-        <%= form_with model: [@course, @chapter] do |chapter| %>
-            <div class="card-header">
-                <button class="btn btn-link" type="button">
-                <%= chapter.text_field :title %>
-                </button>
-                <%= chapter.submit "作成" %>
-            </div>
-        <% end %>
+                    <li class="nav-item">
+                        <div class="d-flex align-items-center nav-headline">
+                            <%= link_to chapter.title, course_chapter_path(@course, chapter), class: 'nav-link chapter-list-title' %>
+                            <button class="btn btn-link btn-sm" data-target="#collapse-menu<%= chapter.id %>" data-toggle="collapse">
+                                <i class="material-icons">keyboard_arrow_down</i>
+                            </button>
+                        </div>
+
+                        <ul id="collapse-menu<%= chapter.id %>" class="collapse list-unstyled pl-3">
+                            <% chapter.sections.each do |section| %>
+                                <li class="section-item"><a href="#" class="nav-link"><%= section.title %></a></li>
+                            <% end %>
+                        </ul>
+                    </li>
+                <% end %>
+
+                <li class="nav-item">
+                    <div class="d-flex align-items-center nav-headline">
+                        <%= form_with model: [@course, @chapter] do |chapter| %>
+                            <div class="input-group">
+                                <%= chapter.text_field :title, class: "form-control" %>
+                                <div class="input-group-append">
+                                    <%= chapter.submit "作成", class: "input-group-text" %>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                </li>
+            </ul>
+        </main>
+        
     </div>
 </div>
+
+
+
+
+
