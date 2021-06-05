@@ -1,0 +1,33 @@
+
+<%= stylesheet_link_tag "articles", :media => "all" %>
+
+<div class="container">
+    <div class="row new-view">
+
+        <h2>edit article</h2>
+        <hr>
+
+        <%= form_with model: @article do |article| %>
+
+            <div class="field">
+                <%= article.label :title %><br />
+                <%= article.text_field :title, class: 'title_field' %>
+            </div>
+
+            <div class="field">
+                <%= article.label :category_name %><br />
+                <%= article.text_field :category_name, value: @article.category.name, class: 'title_field' %>
+            </div>
+
+            <div class="field">
+                <%= article.label :content %><br />
+                <%= article.text_area :content, class: 'content_field' %>
+            </div>
+
+            <div class="actions">
+                <%= article.submit '作成', class: "create-btn" %>
+            </div>
+        <% end %>
+    </div>
+</div>
+
