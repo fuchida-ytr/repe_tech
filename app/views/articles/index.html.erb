@@ -3,6 +3,6 @@
      <tr><th>Title</th><th>Category</th></tr>
     </thead>
     <% @articles.each do |article| %>
-        <tr><td><%= article.title %></td><td><%= article.category.name %></td></tr>
+        <tr><td><%= link_to article.title, article_path(article) %></td><td><%= article.category.name %></td></tr>
     <% end %>
 </table>
