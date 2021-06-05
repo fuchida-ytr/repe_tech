@@ -31,6 +31,9 @@
                         <li class="nav-item">
                             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, "data-confirm" => "本当にログアウトしますか？", class: 'nav-link' %>
                         </li>    
+                        <li class="nav-item">
+                            <%= link_to '記事投稿', new_article_path, class: 'nav-link' %>
+                        </li>
 
                     <% else %>
 
@@ -46,6 +49,10 @@ K
 
                     <li class="nav-item">
                         <%= link_to "コース一覧", courses_path, class: 'nav-link' %>
+                    </li>
+
+                    <li class="nav-item">
+                        <%= link_to '記事一覧', articles_path, class: 'nav-link' %>
                     </li>
                     
 

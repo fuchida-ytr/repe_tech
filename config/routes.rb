@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   resources :chapters, only: [] do
     resources :sections
   end
+
+  resources :articles
 end
