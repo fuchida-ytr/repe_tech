@@ -29,4 +29,8 @@ Rails.application.routes.draw do
   end
   resources :categories, only: [:index]
   resources :favorites, only: [:index]
+
+  namespace :api, format: 'json' do
+    get 'articles/preview'
+  end
 end
