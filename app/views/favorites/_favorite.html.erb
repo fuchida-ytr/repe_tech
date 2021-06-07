@@ -1,0 +1,11 @@
+<% if !Favorite.exists?(user: current_user, article_id: article.id) %>
+  <%= link_to article_favorites_path(article), method: :post, remote: true, class: "favorite-btn favorite-article" do %>
+    <i class="far fa-bookmark"></i>
+    <span><%= article.favorites.length %>いいね！</span>
+  <% end %>
+<% else %>
+  <%= link_to article_favorites_path(article), method: :delete, remote: true, class: "favorite-btn favorite-delete" do %>
+    <i class="fas fa-bookmark"></i>
+    <span><%= article.favorites.length %>いいね！</span>
+  <% end %>
+<% end %>

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   # TODO: 不必要なものは削除、resources等
   # TODO: アルファベット順にソート
 
+  root 'home#index'
+
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -14,8 +16,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  root 'home#index'
-
   resources :courses do
     resources :chapters
   end
@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     resources :sections
   end
 
-  resources :articles
+  resources :articles do
+    resource :favorites, only: [:create, :destroy]
+  end
   resources :categories, only: [:index]
+  resources :favorites, only: [:index]
 end
