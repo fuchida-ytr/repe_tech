@@ -31,6 +31,6 @@ Rails.application.routes.draw do
   resources :favorites, only: [:index]
 
   namespace :api, format: 'json' do
-    get 'articles/preview'
+    get 'preview', to: 'previews#preview'
   end
 end

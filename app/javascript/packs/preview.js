@@ -6,7 +6,7 @@ $(function() {
       var text = $('.content_field').val();
 
       $.ajax({  
-        url: '/api/articles/preview',
+        url: '/api/preview',
         type: 'GET',
         dataType: 'json',
         data: { body: text }
