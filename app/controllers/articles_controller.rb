@@ -6,8 +6,6 @@ class ArticlesController < ApplicationController
 
     def new
         @article = Article.new
-        @a = Article.all.destroy_all
-        @c = Category.all.destroy_all
     end
 
     def create 
@@ -27,17 +25,16 @@ class ArticlesController < ApplicationController
 
     def update
         @article = Article.find(params[:id])
+
         @old_category = @article.category
         new_category_name = article_params[:category_name]
         # 異なる場合は新規作成、かつ他に使用している記事がない場合は削除
         if new_category_name != @old_category.name
             @article.category_id = Category.get_id(new_category_name)
-            puts @article.category_id
             if @old_category.articles.count <= 1
                 @old_category.destroy
             end
         end
-        puts @article.inspect
 
         if @article.update(article_params)
             redirect_to article_path(@article), notice: '更新しました'
