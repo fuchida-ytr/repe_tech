@@ -14,9 +14,18 @@
     <ul class="d-flex  flex-wrap justify-content-around">
       <% @courses.each do |course| %>
         <li>
-          <div><%= attachment_image_tag course, :image %></div>
+          <div class="course-image"><%= attachment_image_tag course, :image %></div>
           <h1><%= link_to course.title, course_path(course) %></h1>
           <p><%= course.caption %></p>
+          <% progress_per = course.get_course_progress(current_user.id) %>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-success"
+                  style="width:<%= progress_per %>%"
+                  role="progressbar"
+                  aria-valuenow="<%= progress_per %>"
+                  aria-valuemin="0"
+                  aria-valuemax="100"><%= progress_per %>%</div>
+          </div>
           <% if admin_signed_in? %>
             <%= link_to 'edit', edit_course_path(course) %> |
             <%= link_to "delete", course_path(course), method: :delete, "data-confirm" => "本当に削除しますか？" %>

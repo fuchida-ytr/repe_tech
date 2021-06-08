@@ -19,9 +19,12 @@ Rails.application.routes.draw do
   resources :courses do
     resources :chapters
   end
-  
   resources :chapters, only: [] do
     resources :sections
+  end
+  resources :sections, only: [] do
+    post 'complete'
+    delete 'incomplete'
   end
 
   resources :articles do
