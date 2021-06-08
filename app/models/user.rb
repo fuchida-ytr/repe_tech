@@ -6,5 +6,6 @@ class User < ApplicationRecord
 
   has_many :articles, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :completed_sections, dependent: :destroy
 
 end

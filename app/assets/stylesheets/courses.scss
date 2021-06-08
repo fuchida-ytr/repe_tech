@@ -29,7 +29,7 @@
             margin: 60px 10px 0;
         }
 
-        div {
+        .course-image {
             width: 100px;
             height: 100px;
             border-radius: 50%;
@@ -43,6 +43,10 @@
                 height: 100px;
                 object-fit: cover;
             }
+        }
+        .progress{
+            width: 80%;
+            margin: 10px auto 20px;
         }
         h1 {
             font-family: "Varela Round", sans-serif;
@@ -93,6 +97,14 @@
         width: 80%;
         margin: 50px auto;
     }
+    .course-progress {
+        width: 80%;
+        margin: 50px auto 0;
+    }
+    .chapter-progress {
+        width: 84%;
+        margin: 0 auto 10px;
+    }
     .chapter-list {
         padding: 0;
         font: 14px/1.6 'arial narrow', sans-serif;
@@ -121,7 +133,10 @@
             box-shadow:1px 1px 2px rgba(0, 0, 0, 0.1) ;
 
             .nav-headline {
-                min-height: 70px;
+                min-height: 50px;
+            }
+            .nav-link {
+                display: inline-block;
             }
             .nav-link:hover {
                 color: #F6A38B;
@@ -133,7 +148,7 @@
                     padding-right: 10px;
                 }
             }
-            .btn-link:hover {
+            button:hover {
                 color: #F6A38B;
             }
         }
@@ -147,6 +162,14 @@
             line-height: 30px;
             border-bottom: dashed 1px #F6A38B;
             background-color: white;
+            .completed-icon {
+                flex: auto;
+            }
+            i {
+                float: right;
+                padding-right: 20px;
+                font-size: 20px;
+            }
         }
     }
 }
