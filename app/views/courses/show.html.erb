@@ -13,16 +13,18 @@
                     <h1 class="display-4 fw-bolder"><%= @course.title %></h1>
                     <p class="lead fw-normal text-white-100 mb-0"><%= @course.caption %></p>
                 </div>
-                <div class="progress course-progress">
-                    <% progress_per = @course.get_course_progress(current_user.id) %>
-                    <div class="progress-bar progress-bar-striped bg-success"
-                        style="width:<%= progress_per %>%"
-                        role="progressbar"
-                        aria-valuenow="<%= progress_per %>"
-                        aria-valuemin="0"
-                        aria-valuemax="100"><%= progress_per %>%
+                <% if user_signed_in? %>
+                    <div class="progress course-progress">
+                        <% progress_per = @course.get_course_progress(current_user.id) %>
+                        <div class="progress-bar progress-bar-striped bg-success"
+                            style="width:<%= progress_per %>%"
+                            role="progressbar"
+                            aria-valuenow="<%= progress_per %>"
+                            aria-valuemin="0"
+                            aria-valuemax="100"><%= progress_per %>%
+                        </div>
                     </div>
-                </div>
+                <% end %>
             </div>
         </section>
 
@@ -40,16 +42,18 @@
                             </button>
                         </div>
 
-                         <div class="progress chapter-progress">
-                            <% progress_per = chapter.get_chapter_progress(current_user.id) %>
-                            <div class="progress-bar progress-bar-striped bg-success"
-                                style="width:<%= progress_per %>%"
-                                role="progressbar"
-                                aria-valuenow="<%= progress_per %>"
-                                aria-valuemin="0"
-                                aria-valuemax="100"><%= progress_per %>%
+                        <% if user_signed_in? %>
+                            <div class="progress chapter-progress">
+                                <% progress_per = chapter.get_chapter_progress(current_user.id) %>
+                                <div class="progress-bar progress-bar-striped bg-success"
+                                    style="width:<%= progress_per %>%"
+                                    role="progressbar"
+                                    aria-valuenow="<%= progress_per %>"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"><%= progress_per %>%
+                                </div>
                             </div>
-                        </div>
+                        <% end %>
 
                         <ul id="collapse-menu<%= chapter.id %>" class="collapse list-unstyled pl-3">
                             <% chapter.sections.each do |section| %>

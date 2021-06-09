@@ -1,0 +1,39 @@
+<h1>復習期間設定</h1>
+
+<hr>
+
+<h2>review_stages</h2>
+
+<table class="table">
+    <tr>
+        <th>Stage</th>
+        <th>After_days</th>
+        <th>Edit</th>
+    </tr>
+    <tr><td>1</td><td></td><td></td></tr>
+    <% @stages.each do |stage| %>
+        <% next unless stage.id %>
+        <tr>
+            <td><%= stage.stage %></td>
+            <td><%= stage.after_days %></td>
+            <td><a href="#edit<%= stage.id %>" data-lity>edit</a></td>
+            <%= render partial: 'review_stages/edit', locals: { stage: stage, next_stage: @next_stage} %>
+        </tr>
+    <% end %>
+</table>
+
+<hr>
+
+<%= form_with model: @stage do |stage| %>
+    <div class="field">
+        <%= stage.label :stage %><br />
+        <%= stage.text_field :stage, class: 'title_field', value: @next_stage %>
+    </div>
+    <div class="field">
+        <%= stage.label :after_days %><br />
+        <%= stage.text_field :after_days, class: 'title_field' %>
+    </div>
+     <div class="actions">
+        <%= stage.submit '作成', class: "create-btn" %>
+    </div>
+<% end %>

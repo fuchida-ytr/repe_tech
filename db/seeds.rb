@@ -6,6 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# User
+user = User.new(
+  name: 'fuchida',
+  email: 'sample@gmail.com',
+  password: '111111'
+)
+user.save!
+
 # RSpec courses-chapters-sections
 rspec_id = '1001'
 Course.create!(

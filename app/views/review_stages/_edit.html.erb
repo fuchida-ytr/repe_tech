@@ -1,0 +1,16 @@
+
+<div id="edit<%= stage.id %>" style="background:#fff" class="lity-hide">
+    <%= form_with model: stage do |f| %>
+        <p>ステージ：<%= stage.stage %></p>
+        <div class="field">
+            <%= f.label :after_days %><br />
+            <%= f.text_field :after_days, class: 'title_field' %>
+        </div>
+        <div class="actions">
+            <%= f.submit '更新', class: "create-btn" %>
+        </div>
+    <% end %>
+    <% if stage.stage == (next_stage - 1) %>
+        <%= link_to "削除", review_stage_path(stage), method: :delete, "data-confirm" => "本当に削除しますか？", class: "" %>
+    <% end %>
+</div>
