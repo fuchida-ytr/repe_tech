@@ -48,8 +48,6 @@ class ArticlesController < ApplicationController
         @article.destroy
         redirect_to articles_path, notice: '削除しました'
     end
-
-
     
     private
   
