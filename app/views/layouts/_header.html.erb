@@ -27,7 +27,6 @@
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><%= current_user.name %></a>
                         </li>
-
                         <li class="nav-item">
                             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, "data-confirm" => "本当にログアウトしますか？", class: 'nav-link' %>
                         </li>    
@@ -36,6 +35,9 @@
                         </li>
                         <li class="nav-item">
                             <%= link_to 'ブックマーク', favorites_path, class: 'nav-link' %>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to '復習期間設定', review_stages_path, class: 'nav-link' %>
                         </li>
 
                     <% else %>

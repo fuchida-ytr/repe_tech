@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_182711) do
+ActiveRecord::Schema.define(version: 2021_06_09_073748) do
 
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -78,6 +78,27 @@ ActiveRecord::Schema.define(version: 2021_06_07_182711) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "review_sections", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.date "next_review_date"
+    t.integer "correct_answers_num", default: 0
+    t.integer "incorrect_answers_num", default: 0
+    t.integer "stage_id"
+    t.bigint "user_id", null: false
+    t.bigint "section_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["section_id"], name: "index_review_sections_on_section_id"
+    t.index ["user_id"], name: "index_review_sections_on_user_id"
+  end
+
+  create_table "review_stages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "stage"
+    t.integer "after_days"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "sections", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -108,4 +129,6 @@ ActiveRecord::Schema.define(version: 2021_06_07_182711) do
   add_foreign_key "completed_sections", "users"
   add_foreign_key "favorites", "articles"
   add_foreign_key "favorites", "users"
+  add_foreign_key "review_sections", "sections"
+  add_foreign_key "review_sections", "users"
 end
