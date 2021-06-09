@@ -1,0 +1,2 @@
+module ReviewSectionsHelper
+end
