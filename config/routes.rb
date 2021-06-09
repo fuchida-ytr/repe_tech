@@ -23,9 +23,12 @@ Rails.application.routes.draw do
     resources :sections
   end
   resources :sections, only: [] do
-    post 'complete'
+    post   'complete'
     delete 'incomplete'
+    resource :review_sections, only: [:create, :destroy]
   end
+
+  resources :review_stages
 
   resources :articles do
     resource :favorites, only: [:create, :destroy]
