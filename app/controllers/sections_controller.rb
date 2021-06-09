@@ -23,7 +23,6 @@ class SectionsController < ApplicationController
 
     def update
         @section = Section.find(params[:id])
-
         if @section.update(section_params)
             redirect_to chapter_section_path(@section.chapter_id, @section), notice: '更新しました'
         else
@@ -35,6 +34,17 @@ class SectionsController < ApplicationController
         @section = Section.find(params[:id])
         @section.destroy
         redirect_to course_chapter_path(@section.chapter.course_id, @section.chapter), notice: '削除しました'
+    end
+
+    def complete
+        @section = Section.find(params[:section_id])
+        @complete = CompletedSection.create(user_id: current_user.id, section_id: @section.id)
+    end
+
+    def incomplete
+        @section = Section.find(params[:section_id])
+        @complete = CompletedSection.find_by(user_id: current_user.id, section_id: @section.id)
+        @complete.destroy
     end
 
     private

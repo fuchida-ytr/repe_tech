@@ -1,0 +1,26 @@
+
+<%= stylesheet_link_tag "articles", :media => "all" %>
+
+<div class="container">
+    <div class="row index-view">
+
+        <h2>記事一覧</h2>
+        <hr>
+
+        <div class="main">
+            <table class="table">
+                <% @articles.each do |article| %>
+                    <tr>
+                        <td><%= link_to article.title, article_path(article) %></td>
+                        <td><%= article.category.name %></td>
+                        <td><%= article.user.name %></td>
+                    </tr>
+                <% end %>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+

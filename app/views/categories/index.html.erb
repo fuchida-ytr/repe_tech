@@ -1,0 +1,8 @@
+<table class="table">
+    <thead class="thead-dark">
+     <tr><th>Name</th><th>個数</th></tr>
+    </thead>
+    <% @categories.each do |category| %>
+        <tr><td><%= category.name %></td><td><%= category.articles.count %></td></tr>
+    <% end %>
+</table>

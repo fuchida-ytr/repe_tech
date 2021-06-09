@@ -1,0 +1,23 @@
+
+
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+        <th>タイトル</th>
+        <th>ユーザー名</th>
+        <th>ブックマーク数</th>
+    </tr>
+  </thead>
+
+  <% if @favorite_articles.present? %>
+        <% @favorite_articles.each do |article| %>
+            <tr>
+                <th><%= link_to article.title, article_path(article) %></th>
+                <th><%= article.user.name %></th>
+                <th><%= article.favorites.count %></th>                
+            </tr>
+        <% end %>
+    <% end %>
+
+</table>

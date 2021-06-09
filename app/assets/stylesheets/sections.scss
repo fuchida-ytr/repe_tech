@@ -10,7 +10,7 @@
         text-decoration: none;
         color: black;
     }
-    h2 {
+    .title {
         font-size: 50px;
         font-weight: 300;
         color: black;
@@ -29,6 +29,9 @@
         border: 1px solid rgba(0, 0, 0, 0.2);
         border-radius: 4px;
         font-size: 20px;
+    }
+    .tab-content {
+        min-height: 300px;
     }
     .content_field {
         width: 70vw;
