@@ -5,21 +5,16 @@ class ReviewSectionsController < ApplicationController
     def index
     end
 
-    # def index
-    #     # ログイン中のユーザーのお気に入りのpost_idカラムを取得
-    #     favorites = Favorite.where(user_id: current_user.id).pluck(:section_id) 
-    #     @favorite_sections = section.find(favorites)     
-    # end
+    def create
+        @section = Section.find(params[:section_id])
+        @review_section = ReviewSection.create(user_id: current_user.id, section_id: @section.id, next_review_date: Date.tomorrow)
+    end
 
-    # お気に入り登録
-    # def create
-    #     @favorite = Favorite.create(user_id: current_user.id, section_id: @section.id)
-    # end
-    # # お気に入り削除
-    # def destroy
-    #     @favorite = Favorite.find_by(user_id: current_user.id, section_id: @section.id)
-    #     @favorite.destroy
-    # end
+    def destroy
+        @section = Section.find(params[:section_id])
+        @review_section = ReviewSection.find_by(user_id: current_user.id, section_id: @section.id)
+        @review_section.destroy
+    end
 
     private
 
