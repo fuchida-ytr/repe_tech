@@ -8,4 +8,8 @@ class Section < ApplicationRecord
         completed_sections.where(user_id: user).exists?
     end
 
+    def reviewed_by?(user)
+        review_sections.where(user_id: user).exists?
+    end
+
 end

@@ -55,6 +55,9 @@
             <div id="section_<%= @section.id %>">
               <%= render partial: 'sections/complete', locals: { section: @section} %>
             </div>
+            <div id="review_section_<%= @section.id %>">
+              <%= render partial: 'review_sections/review_section', locals: { section: @section} %>
+            </div>
           <% end %>
         </div>
         

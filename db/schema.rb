@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2021_06_09_073748) do
     t.date "next_review_date"
     t.integer "correct_answers_num", default: 0
     t.integer "incorrect_answers_num", default: 0
-    t.integer "stage_id"
+    t.integer "review_stage_id"
     t.bigint "user_id", null: false
     t.bigint "section_id", null: false
     t.datetime "created_at", precision: 6, null: false
