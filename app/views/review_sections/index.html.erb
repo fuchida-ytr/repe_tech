@@ -1,0 +1,12 @@
+<h1>今日の復習リスト</h1>
+
+<table class="table">
+  <tr><th>コース名</th><th>今日のsection</th></tr>
+  <% @todays_review_list.each do |course, section_num| %>
+    <tr><td><%= link_to course.title, course_index_review_sections_path(course) %></td><td><%= section_num %></td></tr>
+  <% end %>
+</table>
+
+<% @review_sections.each do |review_section| %>
+<%= review_section.inspect %><br>
+<% end %>

@@ -1,0 +1,11 @@
+<h1><%= @course.title %></h1>
+
+<table class="table">
+  <tr><th>Stage</th><th>section数</th></tr>
+  <% all_section_num = 0 %>
+  <% @todays_review_list_by_stage.each do |stage, section_num| %>
+    <% all_section_num += section_num %>
+    <tr><td><%= link_to stage, course_show_review_sections_path(@course, stage) %></td><td><%= section_num %></td></tr>
+  <% end %>
+  <tr><td><%= link_to 'all', course_show_review_sections_path(@course, "all") %></td><td><%= all_section_num %></td></tr>
+</table>

@@ -1,0 +1,8 @@
+
+<h1>ステージ：<%= @stage %></h1> 
+
+<%= @section.title %>
+<%= @section.content %>
+
+<%= link_to '正解', review_section_correct_path(@section.review_sections.find_by(user_id: current_user.id).id) %>
+<%= link_to '不正解', review_section_incorrect_path(@section.review_sections.find_by(user_id: current_user.id).id) %>
