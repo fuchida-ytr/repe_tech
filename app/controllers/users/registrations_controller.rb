@@ -10,9 +10,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    @default_stage = current_user.review_stages.build(stage: 1, after_days: 0)
+    @default_stage.save!
+  end
 
   # GET /resource/edit
   # def edit
