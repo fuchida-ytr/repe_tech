@@ -72,6 +72,11 @@ a,a:link,a:visited,a:hover,a:active{
 	text-decoration:none;
 }
 
+.alert {
+	width: 50%;
+	margin: 10px auto;
+}
+
 /* --------------------------------------------------------
 	container
 -------------------------------------------------------- */
@@ -153,6 +158,14 @@ a,a:link,a:visited,a:hover,a:active{
 }
 
 .CodeRay {
-	background-color: #364549;
-	color: #e3e3e3;
+	background-color: aliceblue;
+	width: 90%;
+	margin: 5px 0;
+	border-radius: 5px;
+	.code {
+		padding: 10px;
+	}
+	pre {
+		margin-bottom: 0;
+	}
 }

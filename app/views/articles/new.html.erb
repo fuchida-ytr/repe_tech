@@ -1,51 +1,47 @@
 
 <%= stylesheet_link_tag "articles", :media => "all" %>
 
-<div class="container">
-    <div class="row new-view">
+<div class="row new-view">
 
-        <h2 class="title">new article</h2>
-        <hr>
+    <h2 class="title">new article</h2>
+    <hr>
 
-        <%= form_with model: @article do |article| %>
-            <div class="field">
-                <%= article.label :title %><br />
-                <%= article.text_field :title, class: 'title_field' %>
-            </div>
+    <%= form_with model: @article do |article| %>
+        <div class="field">
+            <%= article.label :title %><br />
+            <%= article.text_field :title, class: 'title_field' %>
+        </div>
 
-            <div class="field">
-                <%= article.label :category_name, 'Category' %><br />
-                <%= article.text_field :category_name, class: 'title_field' %>
-            </div>
+        <div class="field">
+            <%= article.label :category_name, 'Category' %><br />
+            <%= article.text_field :category_name, class: 'title_field' %>
+        </div>
 
-            <div class="field">
-                <%= article.label :content %><br />
-        
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link disabled" id="write-tab" data-toggle="tab" href="#write" role="tab" aria-controls="write" aria-selected="true">Write</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="preview-tab" data-toggle="tab" href="#preview" role="tab" aria-controls="preview" aria-selected="false">Preview</a>
-                    </li>
-                </ul>
+        <div class="field">
+            <%= article.label :content %><br />
+    
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link disabled" id="write-tab" data-toggle="tab" href="#write" role="tab" aria-controls="write" aria-selected="true">Write</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="preview-tab" data-toggle="tab" href="#preview" role="tab" aria-controls="preview" aria-selected="false">Preview</a>
+                </li>
+            </ul>
 
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="write" role="tabpanel" aria-labelledby="write-tab">
-                        <%= article.text_area :content, class: 'content_field' %>
-                    </div>
-                    <div class="tab-pane fade" id="preview" role="tabpanel" aria-labelledby="preview-tab"></div>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="write" role="tabpanel" aria-labelledby="write-tab">
+                    <%= article.text_area :content, class: 'content_field' %>
                 </div>
+                <div class="tab-pane fade" id="preview" role="tabpanel" aria-labelledby="preview-tab"></div>
             </div>
+        </div>
 
-            <div class="actions">
-                <%= article.submit '作成', class: "create-btn" %>
-            </div>
-        <% end %>
-
-
-        
-    </div>
+        <div class="actions">
+            <%= article.submit '作成', class: "create-btn" %>
+        </div>
+    <% end %>
+    
 </div>
 
 <%= javascript_pack_tag 'preview' %>
