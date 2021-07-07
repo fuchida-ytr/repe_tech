@@ -9,5 +9,4 @@ class User < ApplicationRecord
   has_many :completed_sections, dependent: :destroy
   has_many :review_stages,      dependent: :destroy
   has_many :review_sections,    dependent: :destroy
-
 end

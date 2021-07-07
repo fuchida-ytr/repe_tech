@@ -1,5 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe "ReviewSections", type: :request do
-
+RSpec.describe 'ReviewSections', type: :request do
 end

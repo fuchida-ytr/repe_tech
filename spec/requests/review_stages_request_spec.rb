@@ -1,5 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe "ReviewStages", type: :request do
-
+RSpec.describe 'ReviewStages', type: :request do
 end
