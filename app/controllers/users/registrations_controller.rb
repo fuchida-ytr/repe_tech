@@ -15,7 +15,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if current_user
       @default_stage = current_user.review_stages.build(stage: 1, after_days: 0)
       unless @default_stage.save
-        flash[:notice] = "ステージ1の作成に失敗しました。"
+        flash[:notice] = 'ステージ1の作成に失敗しました。'
         render 'new'
       end
     end
