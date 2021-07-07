@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+    before_action :set_article, only: [:show, :edit, :update, :destroy]
+    before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
     def index
         @articles = Article.includes(:category)
@@ -11,21 +14,20 @@ class ArticlesController < ApplicationController
     def create 
         @article = current_user.articles.build(article_params)
         @article.category_id = Category.get_id(@article.category_name)
-        @article.save!
-        redirect_to article_path(@article), notice: '作成しました'
+        if @article.save
+            redirect_to article_path(@article), notice: '作成しました。'
+        else
+            render 'new'
+        end
     end
 
     def show
-        @article = Article.find(params[:id])
     end
 
     def edit
-        @article = Article.find(params[:id])
     end
 
     def update
-        @article = Article.find(params[:id])
-
         @old_category = @article.category
         new_category_name = article_params[:category_name]
         # 異なる場合は新規作成、かつ他に使用している記事がない場合は削除
@@ -44,7 +46,6 @@ class ArticlesController < ApplicationController
     end
 
     def destroy
-        @article = Article.find(params[:id])
         @article.destroy
         redirect_to articles_path, notice: '削除しました'
     end
@@ -53,5 +54,16 @@ class ArticlesController < ApplicationController
   
     def article_params
         params.require(:article).permit(:title, :content, :category_name, :category_id)
+    end
+
+    def set_article
+        @article = Article.find(params[:id])
+    end
+
+    def ensure_correct_user
+        if current_user.id != @article.user_id
+           flash[:alert] = "アクセス権限がありません。"
+           redirect_back(fallback_location: homes_path)
+        end
     end
 end

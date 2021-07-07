@@ -12,8 +12,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    @default_stage = current_user.review_stages.build(stage: 1, after_days: 0)
-    @default_stage.save!
+    if current_user
+      @default_stage = current_user.review_stages.build(stage: 1, after_days: 0)
+      unless @default_stage.save
+        flash[:notice] = "ステージ1の作成に失敗しました。"
+        render 'new'
+      end
+    end
   end
 
   # GET /resource/edit
