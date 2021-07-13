@@ -1,12 +1,15 @@
 class ChaptersController < ApplicationController
+  before_action :authenticate_admin!, except: %i[show]
+
+  # 管理者のみ
   def create
     @chapter = Course.find(params[:course_id]).chapters.build(chapter_params)
-    @chapter.save
+    if @chapter.save
+      flash[:notice] = "作成されました。"
+    else
+      flash[:alert] = "タイトルが入力されていません。"
+    end
     redirect_back(fallback_location: root_path)
-  end
-
-  def show
-    @chapter = Chapter.find(params[:id])
   end
 
   def update
@@ -25,6 +28,11 @@ class ChaptersController < ApplicationController
     redirect_to course_path(@chapter.course_id), notice: '削除しました'
   end
 
+  # 共通
+  def show
+    @chapter = Chapter.find(params[:id])
+  end
+  
   private
 
   def chapter_params

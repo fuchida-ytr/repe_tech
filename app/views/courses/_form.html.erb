@@ -1,0 +1,25 @@
+
+
+<div id="form_<%= course.id %>" style="background:#fff" class="lity-hide form-modal">
+    <%= form_with model: course do |f| %>
+      <ul class="course-ul">
+        <li>
+          <div class="course-image">
+            <label class="image-label" for="course_image">
+              <div class="img-box">
+                <img class="preview-course-image" >
+              </div>
+            </label>
+            <%= f.attachment_field :image, id: 'course_image' %>
+          </div>
+          <h1> <%= f.text_field :title, class: 'form-control', placeholder: 'タイトル' %></h1>
+          <p><%= f.text_area :caption, class: 'form-control', placeholder: '説明' %></p>
+        </li>
+      </ul>
+      <div class="modal-footer">
+        <% btn_value = is_new ? "作成" : "更新" %>
+        <%= f.submit btn_value, class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+</div>
+ 
