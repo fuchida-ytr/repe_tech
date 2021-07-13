@@ -1,42 +1,50 @@
 class CoursesController < ApplicationController
+  before_action :authenticate_admin!, except: %i[index show]
+
+  # 管理者のみ
   def index
-    @course = Course.new
     @courses = Course.all
+    @new_course  = Course.new
   end
 
   def create
     @course = Course.new(course_params)
-    @course.save
-    redirect_to courses_path, notice: '投稿に成功しました'
-  end
-
-  def show
-    @course = Course.find(params[:id])
-    @chapter = @course.chapters.build
-    @chapters = @course.chapters
-  end
-
-  def edit
-    @course = Course.find(params[:id])
+    if @course.save
+      flash[:notice] = "作成されました。"
+    else
+      flash[:alert] = "タイトルが入力されていません。"
+    end
+    redirect_back(fallback_location: root_path)
   end
 
   def update
     @course = Course.find(params[:id])
     if @course.update(course_params)
-      redirect_to course_path(@course), notice: '更新しました'
+      flash[:notice] = "更新されました。"
     else
-      render 'show'
+      flash[:alert] = "タイトルが入力されていません。"
     end
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     @course = Course.find(params[:id])
-    @course.destroy
-    redirect_to courses_path, notice: '削除しました'
+    if @course.destroy
+      flash[:notice] = "削除されました。"
+    else
+      flash[:alert] = "削除が失敗しました。"
+    end
+    redirect_back(fallback_location: root_path)
+  end
+
+  # 共通
+  def show 
+    @course = Course.find(params[:id])
+    @new_chapter = @course.chapters.build
   end
 
   private
-
+  
   def course_params
     params.require(:course).permit(
       :title, :caption, :image

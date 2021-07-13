@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # production
+  resources :courses, only: %i[index create show update destroy] do
+    resources :chapters, only: %i[create show]
+  end
   # TODO: 不必要なものは削除、resources等
   # TODO: アルファベット順にソート
 
@@ -15,10 +19,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  # コース関連
-  resources :courses do
-    resources :chapters
-  end
+
   resources :chapters, only: [] do
     resources :sections
   end

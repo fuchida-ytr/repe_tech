@@ -1,83 +1,50 @@
 
 <%= stylesheet_link_tag "courses", :media => "all" %>
 
-<div class="container-fluid">
-  <div class="row index-view">
+<div class="row index-view">
 
-    <section>
-      <div class="text-center text-white">
-        <h2 class="display-4 fw-bolder">コース 一覧</h2>
-        <p class="lead fw-normal text-white-50 mb-0">Go to the next level of technology</p>
-      </div>
-    </section>
-
-    <ul class="d-flex  flex-wrap justify-content-around">
-      <% @courses.each do |course| %>
-        <li>
-          <div class="course-image"><%= attachment_image_tag course, :image %></div>
-          <h1><%= link_to course.title, course_path(course) %></h1>
-          <p><%= course.caption %></p>
-          <% if user_signed_in? %>
-            <% progress_per = course.get_course_progress(current_user.id) %>
-            <div class="progress">
-              <div class="progress-bar progress-bar-striped bg-success"
-                    style="width:<%= progress_per %>%"
-                    role="progressbar"
-                    aria-valuenow="<%= progress_per %>"
-                    aria-valuemin="0"
-                    aria-valuemax="100"><%= progress_per %>%</div>
-            </div>
-          <% end %>
-          <% if admin_signed_in? %>
-            <%= link_to 'edit', edit_course_path(course) %> |
-            <%= link_to "delete", course_path(course), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-
-    <div class="new-modal d-flex flex-row-reverse">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">new course</button>
-
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">新規コース作成</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
-            <div class="modal-body">
-              <%= form_with model: @course do |course| %>
-                <ul>
-                  <li>
-                    <div>
-                     <label class="image-label" for="course_image">
-                        <div class="img-box">
-                          <img class="preview-course-image" >
-                        </div>
-                      </label>
-                      <%= course.attachment_field :image, id: 'course_image' %>
-                    </div>
-                    <h1> <%= course.text_field :title, class: 'form-control', placeholder: 'タイトル' %></h1>
-                    <p><%= course.text_area :caption, class: 'form-control', placeholder: '説明' %></p>
-                  </li>
-                </ul>
-                <div class="modal-footer">
-                <%= course.submit "作成", class: 'btn btn-primary' %>
-                </div>
-              <% end %>
-            </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
+  <section>
+    <div class="text-center text-white">
+      <h2 class="display-4 fw-bolder">コース 一覧</h2>
+      <p class="lead fw-normal mb-0">Review is power</p>
     </div>
+  </section>
+
+  <ul class="d-flex  flex-wrap justify-content-around course-ul">
+    <% @courses.each do |course| %>
+      <li>
+        <div class="course-image"><%= attachment_image_tag course, :image %></div>
+        <h1><%= link_to course.title, course_path(course) %></h1>
+        <p><%= course.caption %></p>
+
+        <% if user_signed_in? %>
+          <% progress_per = course.get_course_progress(current_user.id) %>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-success"
+                  style="width:<%= progress_per %>%"
+                  role="progressbar"
+                  aria-valuenow="<%= progress_per %>"
+                  aria-valuemin="0"
+                  aria-valuemax="100"><%= progress_per %>%</div>
+          </div>
+        <% end %>
+
+        <% if admin_signed_in? %>
+          <a href="#form_<%= course.id %>" data-lity>edit</a>
+          <%= link_to "delete", course_path(course), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+          <%= render partial: 'courses/form', locals: { course: course, is_new: false} %>
+        <% end %>
+
+      </li>
+    <% end %>
+  </ul>
+
+  <% if admin_signed_in? %>
+    <a href="#form_<%= @new_course.id %>" data-lity>new_course</a>
+    <%= render partial: 'courses/form', locals: { course: @new_course, is_new: true} %>
+  <% end %>
 
 
-  </div>
 </div>
 
 <%= javascript_pack_tag 'courses' %>
