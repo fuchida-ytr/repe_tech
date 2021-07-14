@@ -1,12 +1,62 @@
-<h1>管理者一覧</h1>
 
-<% @admins.each do |admin| %>
-    <%= "#{admin.name} #{admin.email}" %>
-<% end %>  
+<%= stylesheet_link_tag "home", :media => "all" %>
 
 
-<h1>ユーザー一覧</h1>
+<header id="header">
+    <%= image_tag "home_back.jpeg" %>
+	<div id="slogan">
+		<h1>Repe Tech</h1>
+		<h2>Web技術 学習・復習サポートアプリ</h2>
+	</div>
+</header>
 
-<% @users.each do |user| %>
-    <%= "#{user.name} #{user.email}" %>
-<% end %>  
+<!-- VISION -->
+<section id="sec01">
+	<header>
+		<h2>ABOUT</h2>
+	</header>
+	<div class="vision">
+        新しい技術を学んでいく上で、
+        課題となる”復習の効率化”。<br>
+        このアプリケーションでは、<br>
+        学んだセクションの内、必要だと思うものを復習リストに追加することで、<br>
+        一定の期間ごとにリストから出題され、復習できます。
+	</div>
+</section>
+<!-- // VISION -->
+
+<hr>
+
+<section class="sec02">
+	<header>
+		<h2>INPUT</h2>
+	</header>
+	<div class="vision">
+        様々なプログラミング言語、フレームワーク、インフラ技術を<br>
+        本を読む感覚で学ぶことができます。
+	</div>
+    <div class="vision"><%= image_tag "home_back.jpeg" %></div>
+    
+</section>
+
+<section class="sec02">
+	<header>
+		<h2>REVIEW</h2>
+	</header>
+	<div class="vision">
+        復習の間隔を自分でカスタマイズして、<br>
+        効率的に学んだことを身につけられます。
+	</div>
+    <div class="vision"><%= image_tag "home_back.jpeg" %></div>
+</section>
+
+<section class="sec02">
+	<header>
+		<h2>OUTPUT</h2>
+	</header>
+	<div class="vision">
+        あなたが学んだことも記事にして、<br>
+        どんどんアウトプットしていきましょう。
+	</div>
+    <div class="vision"><%= image_tag "home_back.jpeg" %></div>
+</section>
