@@ -24,6 +24,6 @@ class Course < ApplicationRecord
     return 0 if all_section_ids.size == 0
     # 完了した全section_id取得
     comp_section_ids = CompletedSection.where(user_id: user_id).where(section_id: all_section_ids).pluck(:id)
-    (comp_section_ids.size / all_section_ids.size * 100).round
+    (100 * comp_section_ids.size / all_section_ids.size).round
   end
 end

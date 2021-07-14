@@ -16,6 +16,6 @@ class Chapter < ApplicationRecord
 
     # 完了した全section_id取得
     comp_sections_ids = CompletedSection.where(user_id: user_id).where(section_id: all_sectons_ids).pluck(:id)
-    (comp_sections_ids.size / all_sectons_ids.size * 100).round
+    (100 * comp_sections_ids.size / all_sectons_ids.size).round
   end
 end
