@@ -1,4 +1,7 @@
 class SectionsController < ApplicationController
+  before_action :authenticate_admin!, except: %i[show]
+
+  # 管理者のみ
   def new
     @chapter = Chapter.find(params[:chapter_id])
     @section = @chapter.sections.build

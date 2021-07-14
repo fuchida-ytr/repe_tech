@@ -1,3 +1,4 @@
+
 <% if section.completed_by?(current_user) %>
     <%= link_to section_incomplete_path(section), method: :delete, remote: true, class: "favorite-btn favorite-delete" do %>
         <i class="fas fa-bookmark"></i>

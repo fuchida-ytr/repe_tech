@@ -3,6 +3,14 @@ Rails.application.routes.draw do
   resources :courses, only: %i[index create show update destroy] do
     resources :chapters, only: %i[create show]
   end
+  resources :chapters, only: [] do
+    resources :sections, only: %i[new create show edit]
+  end
+  resources :sections, only: [] do
+    post   'complete'
+    delete 'incomplete'
+    resource :review_sections, only: %i[create destroy]
+  end
   # TODO: 不必要なものは削除、resources等
   # TODO: アルファベット順にソート
 
@@ -20,14 +28,7 @@ Rails.application.routes.draw do
   }
 
 
-  resources :chapters, only: [] do
-    resources :sections
-  end
-  resources :sections, only: [] do
-    post   'complete'
-    delete 'incomplete'
-    resource :review_sections, only: %i[create destroy]
-  end
+  
   resources :review_stages, only: %i[index create update destroy]
   resources :review_sections, only: [:index] do
     get '/correct', to: 'review_sections#correct', as: 'correct'
