@@ -5,12 +5,12 @@
       <ul class="course-ul">
         <li>
           <div class="course-image">
-            <label class="image-label" for="course_image">
+            <label class="image-label" for="course_image_<%= course.id %>">
               <div class="img-box">
                 <img class="preview-course-image" >
               </div>
             </label>
-            <%= f.attachment_field :image, id: 'course_image' %>
+            <%= f.attachment_field :image, id: "course_image_#{course.id}" %>
           </div>
           <h1> <%= f.text_field :title, class: 'form-control', placeholder: 'タイトル' %></h1>
           <p><%= f.text_area :caption, class: 'form-control', placeholder: '説明' %></p>

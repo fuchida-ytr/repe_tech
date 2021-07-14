@@ -72,18 +72,20 @@
                 </li>
             <% end %>
 
-            <li class="nav-item">
-                <div class="chapter-form align-items-center nav-headline">
-                    <%= form_with model: [@course, @new_chapter] do |chapter| %>
-                        <div class="input-group">
-                            <%= chapter.text_field :title, class: "form-control" %>
-                            <div class="input-group-append">
-                                <%= chapter.submit "作成", class: "input-group-text" %>
+            <% if admin_signed_in? %>
+                <li class="nav-item">
+                    <div class="chapter-form align-items-center nav-headline">
+                        <%= form_with model: [@course, @new_chapter] do |chapter| %>
+                            <div class="input-group">
+                                <%= chapter.text_field :title, class: "form-control" %>
+                                <div class="input-group-append">
+                                    <%= chapter.submit "作成", class: "input-group-text" %>
+                                </div>
                             </div>
-                        </div>
-                    <% end %>
-                </div>
-            </li>
+                        <% end %>
+                    </div>
+                </li>
+            <% end %>
         </ul>
     </main>
     
