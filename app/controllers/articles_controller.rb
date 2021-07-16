@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   before_action :ensure_correct_user, only: %i[edit update destroy]
 
   def index
-    @articles = Article.includes(:category)
+    @articles = Article.includes(:category).page(params[:page]).per(9)
   end
 
   def new

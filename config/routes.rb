@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   # production
+  root 'home#index'
+
   resources :courses, only: %i[index create show update destroy] do
     resources :chapters, only: %i[create show]
   end
@@ -12,13 +14,20 @@ Rails.application.routes.draw do
     resource :review_sections, only: %i[create destroy]
   end
 
+  # 記事投稿関連
+  resources :articles do
+    resource :favorites, only: %i[create destroy]
+  end
+  resources :categories, only: [:index]
+  resources :favorites, only: [:index]
+
   # コース/記事検索
   get 'search' => 'home#search', as:'search'
 
   # TODO: 不必要なものは削除、resources等
   # TODO: アルファベット順にソート
 
-  root 'home#index'
+
 
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
@@ -43,12 +52,7 @@ Rails.application.routes.draw do
     get '/courses/:course_id/stages/:stage_id', to: 'review_sections#course_show', as: 'course_show'
   end
 
-  # 記事投稿関連
-  resources :articles do
-    resource :favorites, only: %i[create destroy]
-  end
-  resources :categories, only: [:index]
-  resources :favorites, only: [:index]
+  
 
   # 共通
   namespace :api, format: 'json' do

@@ -2,25 +2,28 @@
 <%= stylesheet_link_tag "articles", :media => "all" %>
 
 <div class="row index-view">
-    <h2>記事一覧</h2>
+    <h3>記事一覧</h3>
     <hr>
-    <div class="row mb-2">
-        <div class="col-md-6">
-            
-        </div>
-    </div>
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <table class="table">
         <% @articles.each do |article| %>
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-primary"></strong>
-                    <h3 class="mb-0"><%= link_to article.title, article_path(article) %></h3>
-                    <div class="mb-1 text-muted"><%= article.category.name %>/<%= article.user.name %></div>
-                    <p class="card-text mb-auto"><%= article.favorites.length %>いいね！</p>
+            <tr>
+                <td>
+                <div class="flex-md-row h-md-250">
+                    <div class="card-body d-flex flex-column align-items-start">
+                        <h4 class="mb-0">
+                            <%= link_to article.title, article_path(article), class: "text-dark" %>
+                        </h4>
+                        <div class="mb-1 text-muted"><%= article.category.name %></div>
+                        <!-- <p class="card-text mb-auto"><%#= article.content.truncate(100) %></p> -->
+                        <p class="card-good mb-auto"><i class="far fa-thumbs-up"></i> <%= article.favorites.length %></p>
+                        <div class="mb-1 text-muted card-username"><%= article.updated_at.strftime('%Y/%m/%d') %> - <%= article.user.name %></div>
+                    </div>
                 </div>
-            </div>
+                </td>
+            </tr>
         <% end %>
-    </main>
+    </table>
+    <%= paginate @articles %>
 </div>
 
 

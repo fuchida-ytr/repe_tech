@@ -65,6 +65,8 @@ gem 'coderay'
 # image upload
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
+# pagination
+gem 'kaminari'
 # deploy
 gem 'json'
 gem 'listen', '>= 3.0.5', '< 3.2'
