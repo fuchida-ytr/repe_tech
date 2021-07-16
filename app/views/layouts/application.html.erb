@@ -25,29 +25,28 @@
   </head>
 
   <body>
-  
-
     <%= render 'layouts/header' %>
-
-
-
-    <% if notice %>
-      <div class="alert alert-success" role="alert">
-        <%= notice %>
-      </div>
-    <% end %>
-    
-    <% if alert %>
-      <div class="alert alert-danger" role="alert">
-        <%= alert %>
-      </div>
-    <% end %>
     
     <div class="container-fluid">
       <%= yield %>
     </div>
     
     <%= render 'layouts/footer' %>
+
+    <% unless flash.empty?  %>
+      <script>
+        <% flash.each do |key, value| %>
+          <% type = key.to_s.gsub('alert', 'error').gsub('notice', 'success') %>
+          new Noty({
+              type: '<%= type %>',
+              layout: 'topRight',
+              timeout: 7000,
+              theme: 'sunset',
+              text: '<%= value %>'
+          }).show();
+        <% end %>
+      </script>
+    <% end %>
 
   </body>
 </html>
