@@ -9,63 +9,48 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
-
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
 
-                    <% if admin_signed_in? %>
+                    <li class="nav-item">
+                        <%= link_to "コース一覧", courses_path, class: 'nav-link' %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to '記事一覧', articles_path, class: 'nav-link' %>
+                    </li>
 
+                    <% if admin_signed_in? %>
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><%= current_admin.name %></a>
                         </li>
-
                         <li class="nav-item">
                             <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, "data-confirm" => "本当にログアウトしますか？", class: 'nav-link' %>
                         </li>                                            
                         
                     <% elsif user_signed_in? %>
-
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><%= current_user.name %></a>
+                            <%= link_to 'お気に入り', favorites_path, class: 'nav-link' %>
                         </li>
                         <li class="nav-item">
-                            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, "data-confirm" => "本当にログアウトしますか？", class: 'nav-link' %>
-                        </li>    
-                        <li class="nav-item">
-                            <%= link_to '記事投稿', new_article_path, class: 'nav-link' %>
+                            <%= link_to '復習リスト', review_sections_path, class: 'nav-link' %>
                         </li>
-                        <li class="nav-item">
-                            <%= link_to 'ブックマーク', favorites_path, class: 'nav-link' %>
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to '復習期間設定', review_stages_path, class: 'nav-link' %>
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to '復習する', review_sections_path, class: 'nav-link' %>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <%= current_user.name %>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <%= link_to '記事投稿', new_article_path, class: 'dropdown-item' %>
+                                <%= link_to '復習期間設定', review_stages_path, class: 'dropdown-item' %>
+                                <div class="dropdown-divider"></div>
+                                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, "data-confirm" => "本当にログアウトしますか？", class: 'dropdown-item' %>
+                            </div>
                         </li>
 
                     <% else %>
-
-                        <li class="nav-item">
-                            <%= link_to "管理者ログイン", new_admin_session_path, class: 'nav-link' %>
-                        </li>
-
                         <li class="nav-item">
                             <%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
                         </li>
                     <% end %>
-
-                    <li class="nav-item">
-                        <%= link_to "コース一覧", courses_path, class: 'nav-link' %>
-                    </li>
-
-                    <li class="nav-item">
-                        <%= link_to '記事一覧', articles_path, class: 'nav-link' %>
-                    </li>
-                    
-
                 </ul>
-                
-
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="検索" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
