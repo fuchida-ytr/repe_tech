@@ -3,8 +3,31 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .index-view {
-    width: 90%;
-    margin: 0 auto;
+	max-width: 800px;
+	width: 80%;
+	margin: 0 auto;
+    padding-top: 50px;
+	.table {
+		max-width: 600px;
+		margin: 0 auto;
+	}
+    .card-body {
+        position: relative;
+        .card-good {
+            padding-top: 5px;
+        }
+        .card-username {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+        }
+        a:hover {
+            color: #FF5722 !important;
+        }
+    }
+    .pagination {
+        margin-top: 20px;
+    }
 }
 
 .new-view {
