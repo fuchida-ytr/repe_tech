@@ -5,8 +5,8 @@ class HomeController < ApplicationController
 
   # キーワードを含むセクション、記事を検索
   def search
-    @sections = Section.search(params[:keyword]).limit(5)
-    @articles = Article.search(params[:keyword]).limit(5)
+    @sections = Section.search(params[:keyword])
+    @articles = Article.search(params[:keyword])
     @keyword = params[:keyword]
 		# @diaries = Diary.search(params[:search]).order(id: :desc).page(params[:page]).per(9)
 	end

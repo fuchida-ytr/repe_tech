@@ -3,6 +3,13 @@
 
 <div class="row index-view">
     <h3>記事一覧</h3>
+    
+    <div class="form-group d-flex justify-content-end">
+        <%= form_with url: articles_path, method: :get do |f| %>
+            <%= f.select :sort_type, {'新着更新順': 'new', 'ブックマーク登録の多い順': 'favorite', '古い順': 'old'}, { selected: @sort_type}, { class: 'form-control custom-select' , onchange: "submit(this.form)" } %>
+        <% end %>
+    </div>
+    
     <hr>
     <table class="table">
         <% @articles.each do |article| %>

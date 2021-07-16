@@ -4,7 +4,13 @@ class ArticlesController < ApplicationController
   before_action :ensure_correct_user, only: %i[edit update destroy]
 
   def index
-    @articles = Article.includes(:category).page(params[:page]).per(9)
+    @sort_type = params[:sort_type]
+    # @articles = Article.includes(:category).order(id: :desc).page(params[:page]).per(9)
+    if @sort_type == 'favorite'
+      @articles = Kaminari.paginate_array(Article.sort(@sort_type)).page(params[:page]).per(9)
+    else
+      @articles = Article.sort(@sort_type).page(params[:page]).per(9)
+    end
   end
 
   def new
