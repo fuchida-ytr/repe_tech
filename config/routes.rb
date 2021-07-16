@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     delete 'incomplete'
     resource :review_sections, only: %i[create destroy]
   end
+
+  # コース/記事検索
+  get 'search' => 'home#search', as:'search'
+
   # TODO: 不必要なものは削除、resources等
   # TODO: アルファベット順にソート
 

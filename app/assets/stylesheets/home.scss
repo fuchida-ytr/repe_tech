@@ -393,3 +393,13 @@ section h2{
 		padding: 0 20px;
 	}
 }
+
+.search-view {
+	max-width: 800px;
+	width: 80%;
+	margin: 0 auto;
+	.search-result {
+		max-width: 600px;
+		margin: 0 auto;
+	}
+}
