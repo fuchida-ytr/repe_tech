@@ -7,7 +7,7 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading"><%= @chapter.course.title %></div>
+                        <div class="sb-sidenav-menu-heading"><%= link_to @chapter.course.title, course_path(@chapter.course), class: "nav-link" %></div>
 
                         <% @chapter.course.chapters.each do |chapter| %>
                             <div class="chapter-nav">

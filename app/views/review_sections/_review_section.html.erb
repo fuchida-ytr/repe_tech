@@ -1,13 +1,12 @@
 <% if section.reviewed_by?(current_user) %>
-    <%= link_to section_review_sections_path(section), method: :delete, remote: true, class: "favorite-btn favorite-delete" do %>
-        <i class="fas fa-bookmark"></i>
-        <span>復習しない</span>
-    <% end %>
-    
-<% else %>
-    <%= link_to section_review_sections_path(section), method: :post, remote: true, class: "favorite-btn favorite-section" do %>
-        <i class="far fa-bookmark"></i>
-        <span>復習する</span>
-    <% end %>
+<%= link_to section_review_sections_path(section), method: :delete, remote: true, class: "favorite-btn favorite-delete" do %>
+<i class="fas fa-folder-minus"></i>
+<span>復習リスト追加済み</span>
 <% end %>
 
+<% else %>
+<%= link_to section_review_sections_path(section), method: :post, remote: true, class: "favorite-btn favorite-section" do %>
+<i class="fas fa-folder-plus"></i>
+<span>復習する</span>
+<% end %>
+<% end %>

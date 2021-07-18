@@ -242,7 +242,6 @@
     pre {
       display: block;
       margin-top: 0;
-      margin-bottom: 1rem;
       overflow: auto;
       font-size: 0.875em;
     }
@@ -10849,7 +10848,6 @@
       display: flex;
     }
     #layoutSidenav #layoutSidenav_nav {
-      flex-basis: 240px;
       flex-shrink: 0;
       transition: transform 0.15s ease-in-out;
       z-index: 1038;

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :chapters, only: %i[create show]
   end
   resources :chapters, only: [] do
-    resources :sections, only: %i[new create show edit]
+    resources :sections, only: %i[new create show edit update]
   end
   resources :sections, only: [] do
     post   'complete'

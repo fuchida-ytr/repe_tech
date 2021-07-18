@@ -10,6 +10,7 @@
         text-decoration: none;
         color: black;
     }
+
     .title {
         font-size: 50px;
         font-weight: 300;
@@ -18,10 +19,12 @@
         margin-top: 0px;
         margin-bottom: 20px;
     }
-    
-    .field, .actions {
+
+    .field,
+    .actions {
         margin: 20px;
     }
+
     .title_field {
         width: 70vw;
         height: 40px;
@@ -30,9 +33,11 @@
         border-radius: 4px;
         font-size: 20px;
     }
+
     .tab-content {
         min-height: 300px;
     }
+
     .content_field {
         width: 70vw;
         height: 300px;
@@ -40,6 +45,7 @@
         border: 1px solid rgba(0, 0, 0, 0.2);
         border-radius: 4px;
     }
+
     .create-btn {
         display: inline-block;
         padding: 0.5em 1em;
@@ -53,14 +59,16 @@
         margin-top: 10px;
         margin-left: 10px;
     }
+
     .create-btn:hover {
         background: #cbedff;
         color: #FFF;
     }
-    
+
     .actions {
         margin-bottom: 50px;
     }
+
     @media screen and (max-width: 375px) {
         h2 {
             font-size: 40px;
@@ -71,14 +79,33 @@
 
 
 .show-view {
+    .favorite-btn {
+        margin: 0 10px;
+        color: black;
+    }
+
+    i {
+        font-size: 20px;
+    }
+
+    .favorite-btn:hover {
+        color: #FF5722
+    }
 
     .section-content {
         width: 94%;
+        margin-left: 10px;
         margin-bottom: 70px;
     }
 
-    .CodeRay {
-        background-color: #364549;
-        color: #e3e3e3;
+    .breadcrumb-item a {
+        text-decoration: none;
+        color: black;
+    }
+
+    @media screen and (min-width: 768px) {
+        .breadcrumb-nav {
+            display: none
+        }
     }
 }
