@@ -54,6 +54,11 @@ ja:
       send_paranoid_instructions: "アカウントが存在する場合、ロックを解除する方法をメールでご連絡します。"
       unlocked: "アカウントのロックが解除されました。ログインしています。"
   errors:
+    models:
+        user:
+          attributes:
+            current_password:
+              blank: "が空になっています"
     messages:
       taken: "は既に使用されています。"
       blank: "が入力されていません。"
@@ -87,5 +92,3 @@ ja:
         password_confirmation: "パスワード確認"
         email: "メールアドレス"
         remember_me: "ログイン状態を維持する"
-
-

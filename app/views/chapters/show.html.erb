@@ -113,9 +113,9 @@
                                 <% end %>
                             </tbody>
                         </table>
-                        <%# if admin_signed_in? %>
+                        <% if admin_signed_in? %>
                             <%= link_to 'new section', new_chapter_section_path(@chapter) %>
-                        <%# end %>
+                        <% end %>
                     </div>
                 </div>
             </main>
