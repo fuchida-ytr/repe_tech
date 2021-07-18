@@ -3,8 +3,10 @@
 
 <div class="row new-view">
 
-    <h2 class="title">edit article</h2>
+    <h2 class="title"><%= link_to "edit article", @article %></h2>
     <hr>
+
+    <%= render partial: 'layouts/error_messages', locals: { resource: @article} %>
 
     <%= form_with model: @article do |article| %>
         <div class="field">
@@ -20,7 +22,7 @@
         <div class="field">
             <%= article.label :content %><br />
     
-            <ul class="nav nav-tabs" role="tablist">
+            <ul class="nav" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link disabled" id="write-tab" data-toggle="tab" href="#write" role="tab" aria-controls="write" aria-selected="true">Write</a>
                 </li>
@@ -41,7 +43,7 @@
             <%= article.submit '更新', class: "create-btn" %>
         </div>
     <% end %>
-
+    
 </div>
 
 <%= javascript_pack_tag 'preview' %>

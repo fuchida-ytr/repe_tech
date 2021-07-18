@@ -6,6 +6,8 @@
     <h2 class="title">new article</h2>
     <hr>
 
+    <%= render partial: 'layouts/error_messages', locals: { resource: @article} %>
+
     <%= form_with model: @article do |article| %>
         <div class="field">
             <%= article.label :title %><br />
@@ -20,7 +22,7 @@
         <div class="field">
             <%= article.label :content %><br />
     
-            <ul class="nav nav-tabs" role="tablist">
+            <ul class="nav" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link disabled" id="write-tab" data-toggle="tab" href="#write" role="tab" aria-controls="write" aria-selected="true">Write</a>
                 </li>

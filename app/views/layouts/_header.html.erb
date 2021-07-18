@@ -13,6 +13,11 @@
                     <li class="nav-item">
                         <%= link_to "コース一覧", courses_path, class: 'nav-link' %>
                     </li>
+                    <% if user_signed_in? %>
+                        <li class="nav-item">
+                            <%= link_to '復習リスト', review_sections_path, class: 'nav-link' %>
+                        </li>
+                    <% end %>
                     <li class="nav-item">
                         <%= link_to '記事一覧', articles_path, class: 'nav-link' %>
                     </li>
@@ -31,9 +36,6 @@
                         </li>
                         <li class="nav-item">
                             <%= link_to 'お気に入り', favorites_path, class: 'nav-link' %>
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to '復習リスト', review_sections_path, class: 'nav-link' %>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
