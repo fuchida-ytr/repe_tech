@@ -1,5 +1,5 @@
 class SectionsController < ApplicationController
-  before_action :authenticate_admin!, except: %i[show]
+  before_action :authenticate_admin!, except: %i[show complete incomplete]
 
   # 管理者のみ
   def new
@@ -16,6 +16,9 @@ class SectionsController < ApplicationController
 
   def show
     @section = Section.find(params[:id])
+    @chapter = @section.chapter
+    # サイドバー用
+    @chapters = @chapter.course.chapters.includes(:sections)
   end
 
   def edit

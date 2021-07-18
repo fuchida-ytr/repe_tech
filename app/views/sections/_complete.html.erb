@@ -1,14 +1,12 @@
-
 <% if section.completed_by?(current_user) %>
-    <%= link_to section_incomplete_path(section), method: :delete, remote: true, class: "favorite-btn favorite-delete" do %>
-        <i class="fas fa-bookmark"></i>
-        <span>完了</span>
-    <% end %>
-    
-<% else %>
-    <%= link_to section_complete_path(section), method: :post, remote: true, class: "favorite-btn favorite-section" do %>
-        <i class="far fa-bookmark"></i>
-        <span>未完了</span>
-    <% end %>
+<%= link_to section_incomplete_path(section), method: :delete, remote: true, class: "favorite-btn favorite-delete" do %>
+<i class="far fa-check-square"></i>
+<span>完了</span>
 <% end %>
 
+<% else %>
+<%= link_to section_complete_path(section), method: :post, remote: true, class: "favorite-btn favorite-section" do %>
+<i class="far fa-square"></i>
+<span>未完了</span>
+<% end %>
+<% end %>
