@@ -4,8 +4,9 @@ class FavoritesController < ApplicationController
 
   def index
     # ログイン中のユーザーのお気に入りのpost_idカラムを取得
-    favorites = Favorite.where(user_id: current_user.id).pluck(:article_id)
-    @favorite_articles = Article.find(favorites)
+    favorite_article_ids = Favorite.where(user_id: current_user.id).pluck(:article_id)
+    @favorite_articles = Article.find(favorite_article_ids)
+    @categories = Category.get_names_with_articles
   end
 
   # お気に入り登録

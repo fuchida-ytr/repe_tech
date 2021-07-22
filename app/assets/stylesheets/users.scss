@@ -1,7 +1,11 @@
 /* Fonts */
 
 /* Simple Reset */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 /* body */
 .new-view {
@@ -12,7 +16,7 @@
 
 /* Form Layout */
 .form-wrapper {
-  background: #fafafa; 
+  background: #fafafa;
   margin: 3em auto;
   padding: 0 1em;
   max-width: 370px;
@@ -54,20 +58,27 @@ form {
   width: 100%;
 }
 
-.button-panel .button {
-  background: #f16272;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  height: 50px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.2em;
-  letter-spacing: 0.05em;
-  text-align: center;
-  text-transform: uppercase;
-  transition: background 0.3s ease-in-out;
-  width: 100%;
+.button-panel {
+  .button {
+    background: #f16272;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    height: 50px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background 0.3s ease-in-out;
+    width: 100%;
+  }
+
+  .demo-btn {
+    background-color: cadetblue;
+  }
 }
+
 
 .button:hover {
   background: #ee3e52;
