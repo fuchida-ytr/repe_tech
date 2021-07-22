@@ -1,28 +1,37 @@
-
 <%= stylesheet_link_tag "users", :media => "all" %>
 
 <div class="row new-view">
   <div class="form-wrapper">
     <h1>Sign In</h1>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= render "users/shared/error_messages", resource: resource %>
+    <%= render "users/shared/error_messages", resource: resource %>
 
-      <div class="form-item">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
+    <div class="form-item">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-      <div class="form-item">
-        <%= f.label :password %><br />
-        <%= f.password_field :password, autocomplete: "current-password" %>
-      </div>
+    <div class="form-item">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
 
-      <div class="button-panel">
-        <%= f.submit "Sign in", class: "button" %>
-      </div>
+    <div class="button-panel">
+      <%= f.submit "Sign in", class: "button" %>
+    </div>
     <% end %>
     <div class="form-footer">
       <%= render "users/shared/links" %>
     </div>
+    <hr>
+    <p>もしくは</p>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= f.hidden_field :email, value: "demo@gmail.com" %>
+    <%= f.hidden_field :password, value: "demouser" %>
+    <div class="button-panel">
+      <%= f.submit "デモユーザーとしてログイン", class: "button demo-btn" %>
+    </div>
+    <% end %>
+    <hr>
   </div>
 </div>
