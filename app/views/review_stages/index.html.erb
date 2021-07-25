@@ -1,39 +1,25 @@
-<h1>復習期間設定</h1>
+<%= stylesheet_link_tag "review_stages", :media => "all" %>
 
-<hr>
+<div class="row index-view">
 
-<h2>review_stages</h2>
-
-<table class="table">
-    <tr>
-        <th>Stage</th>
-        <th>After_days</th>
-        <th>Edit</th>
-    </tr>
-    <tr><td>1</td><td></td><td></td></tr>
-    <% @stages.each do |stage| %>
+    <ul class="arrowlist" data-title="復習期間設定">
+        <% @stages.each do |stage| %>
         <% next unless stage.id %>
-        <tr>
-            <td><%= stage.stage %></td>
-            <td><%= stage.after_days %></td>
-            <td><a href="#edit<%= stage.id %>" data-lity>edit</a></td>
-            <%= render partial: 'review_stages/edit', locals: { stage: stage, next_stage: @next_stage} %>
-        </tr>
-    <% end %>
-</table>
-
-<hr>
-
-<%= form_with model: @stage do |stage| %>
-    <div class="field">
-        <%= stage.label :stage %><br />
-        <%= stage.text_field :stage, class: 'title_field', value: @next_stage %>
-    </div>
-    <div class="field">
-        <%= stage.label :after_days %><br />
-        <%= stage.text_field :after_days, class: 'title_field' %>
-    </div>
-     <div class="actions">
-        <%= stage.submit '作成', class: "create-btn" %>
-    </div>
-<% end %>
+        <% if stage.stage == 1 %>
+        <li class="stage-li">stage: <%= stage.stage %></li>
+        <% else %>
+        <li class="arrow-li"><i class="fas fa-chevron-down"></i><a href="#edit<%= stage.id %>" data-lity>
+                <%= stage.after_days %>日後</a></li>
+        <li class="stage-li">stage: <%= stage.stage %></li>
+        <%= render partial: 'review_stages/edit', locals: { stage: stage, next_stage: @next_stage} %>
+        <% end %>
+        <% end %>
+        <hr>
+        <%= form_with model: @stage do |stage| %>
+        <li class="arrow-li form-li"><i class="fas fa-chevron-down"></i>
+            <%= stage.text_field :after_days, class: 'afterdays-field' %>日後</li>
+        <li class="stage-li">stage: <%= @next_stage %>
+            <%= stage.submit '作成', class: "create-btn btn btn-outline-primary btn-sm" %></li>
+        <% end %>
+    </ul>
+</div>

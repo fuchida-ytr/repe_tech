@@ -16,23 +16,29 @@
         min-width: 200px;
         margin-bottom: 10px;
     }
-	.table {
-		max-width: 600px;
-	}
+
+    .table {
+        max-width: 600px;
+    }
+
     .card-body {
         position: relative;
+
         .card-good {
             padding-top: 5px;
         }
+
         .card-username {
             position: absolute;
             bottom: 5px;
             right: 5px;
         }
+
         a:hover {
             color: #FF5722 !important;
         }
     }
+
     .pagination {
         margin-top: 20px;
     }
@@ -41,12 +47,14 @@
 .new-view {
     width: 90%;
     margin: 0 auto;
+    margin-right: auto !important;
     max-width: 900px;
 
     nav a:hover {
         text-decoration: none;
         color: black;
     }
+
     .title {
         font-size: 50px;
         font-weight: 300;
@@ -55,10 +63,12 @@
         margin-top: 20px;
         margin-bottom: 20px;
     }
-    
-    .field, .actions {
+
+    .field,
+    .actions {
         margin: 20px;
     }
+
     .title_field {
         min-width: 60vw;
         width: 100%;
@@ -68,9 +78,11 @@
         border-radius: 4px;
         font-size: 20px;
     }
+
     .tab-content {
         min-height: 300px;
     }
+
     .content_field {
         min-width: 60vw;
         width: 100%;
@@ -79,6 +91,7 @@
         border: 1px solid rgba(0, 0, 0, 0.2);
         border-radius: 4px;
     }
+
     .create-btn {
         display: inline-block;
         padding: 0.5em 1em;
@@ -92,14 +105,16 @@
         margin-top: 10px;
         margin-left: 10px;
     }
+
     .create-btn:hover {
         background: #cbedff;
         color: #FFF;
     }
-    
+
     .actions {
         margin-bottom: 50px;
     }
+
     @media screen and (max-width: 375px) {
         h2 {
             font-size: 40px;

@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   # コース/記事検索
   get 'search' => 'home#search', as:'search'
 
+  # 復習機能関連
+  resources :review_stages, only: %i[index create update destroy]
+
   # TODO: 不必要なものは削除、resources等
   # TODO: アルファベット順にソート
 
@@ -42,7 +45,7 @@ Rails.application.routes.draw do
 
 
   
-  resources :review_stages, only: %i[index create update destroy]
+  
   resources :review_sections, only: [:index] do
     get '/correct', to: 'review_sections#correct', as: 'correct'
     get '/incorrect', to: 'review_sections#incorrect', as: 'incorrect'
