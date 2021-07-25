@@ -1,16 +1,19 @@
-
-<div id="edit<%= stage.id %>" style="background:#fff" class="lity-hide">
+<div id="edit<%= stage.id %>" style="background:#fff" class="lity-hide edit-modal">
     <%= form_with model: stage do |f| %>
-        <p>ステージ：<%= stage.stage %></p>
-        <div class="field">
-            <%= f.label :after_days %><br />
-            <%= f.text_field :after_days, class: 'title_field' %>
+    <h3>stage : <%= stage.stage %></h3>
+    <div class="input-group col-auto">
+        <%= f.text_field :after_days, class: 'form-control edit-field' %>
+        <div class="input-group-append">
+            <div class="input-group-text"> 日後</div>
         </div>
-        <div class="actions">
-            <%= f.submit '更新', class: "create-btn" %>
-        </div>
-    <% end %>
+    </div>
+    <div class="actions col-auto">
+        <%= f.submit '更新', class: "btn btn-outline-primary" %>
+    </div>
     <% if stage.stage == (next_stage - 1) %>
-        <%= link_to "削除", review_stage_path(stage), method: :delete, "data-confirm" => "本当に削除しますか？", class: "" %>
+    <hr>
+    <%= link_to "削除", review_stage_path(stage), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
     <% end %>
+    <% end %>
+
 </div>

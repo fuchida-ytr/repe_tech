@@ -1,3 +1,112 @@
 // Place all the styles related to the ReviewStages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.index-view {
+    width: 80%;
+    margin: 0 auto;
+    margin-right: auto !important;
+    max-width: 800px;
+
+    .title {
+        font-size: 50px;
+        font-weight: 300;
+        color: black;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    ul.arrowlist {
+        list-style: none;
+        padding: 0 10px 15px 10px;
+        margin: 15px 0;
+        border: 2px solid #e8e8e8;
+        /* 外枠ボーダー 好みに合わせて */
+        background-color: #bcdee7;
+        /* 背景色 好みに合わせて */
+    }
+
+    ul.arrowlist:before {
+        content: attr(data-title)"";
+        display: block;
+        padding: 10px;
+        margin: 0 -10px 15px -10px;
+        background-color: #e8e8e8;
+        /* タイトル背景色 好みに合わせて */
+        text-align: center;
+        font-weight: bold;
+    }
+
+    ul.arrowlist .stage-li {
+        display: table;
+        margin: 0 auto 10px;
+        display: table;
+        position: relative;
+        box-sizing: border-box;
+        padding: 10px 20px;
+        border: 2px solid #e8e8e8;
+        /* ブロックボーダー 好みに合わせて */
+        background-color: #FFF;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .arrow-li {
+        display: table;
+        margin: 0 auto 10px;
+        display: table;
+        position: relative;
+        box-sizing: border-box;
+        padding: 10px 20px;
+        padding-left: 55px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .form-li {
+        padding-left: 75px;
+    }
+
+    .afterdays-field {
+        width: 30px;
+        margin-left: 5px;
+        text-align: center;
+    }
+
+}
+
+.edit-modal {
+    max-width: 400px;
+    height: 300px;
+    width: 90vw;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+
+    form {
+        width: 90%;
+        margin: 0 auto;
+        padding: 30px;
+
+        .input-group {
+            width: 100px;
+        }
+
+        .input-group-text {
+            border-radius: 0 .25rem .25rem 0;
+        }
+
+        .edit-field {
+            width: 30px !important;
+            text-align: center;
+        }
+
+        .btn-outline-primary {
+            margin-top: 20px;
+        }
+    }
+
+    .btn-outline-danger {
+        color: #dc3545;
+    }
+}
