@@ -1,12 +1,32 @@
-<h1>今日の復習リスト</h1>
+<%= stylesheet_link_tag "review_sections", :media => "all" %>
+<!-- テンプレートとして使用 -->
+<%= stylesheet_link_tag "courses", :media => "all" %>
 
-<table class="table">
-  <tr><th>コース名</th><th>今日のsection</th></tr>
-  <% @todays_review_list.each do |course, section_num| %>
-    <tr><td><%= link_to course.title, course_index_review_sections_path(course) %></td><td><%= section_num %></td></tr>
-  <% end %>
-</table>
+<div class="row index-view">
 
-<% @review_sections.each do |review_section| %>
-<%= review_section.inspect %><br>
-<% end %>
+  <section>
+    <div class="text-center section-title">
+      <h2 class="display-4 fw-bolder">復習リスト</h2>
+      <p class="lead fw-normal mb-0">Review is power</p>
+    </div>
+  </section>
+
+  <ul class="d-flex  flex-wrap justify-content-around course-ul">
+    <% @todays_review_list.each do |course, section_num| %>
+    <li>
+      <div class="course-image"><%= attachment_image_tag course, :image %></div>
+      <h1><%= link_to course.title, course_index_review_sections_path(course) %></h1>
+      <p><%= course.caption %></p>
+      <hr>
+      <% if user_signed_in? %>
+      <div class="section-num">
+        <%= "today：#{section_num} 個" %>
+      </div>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+
+</div>
+
+<%= javascript_pack_tag 'courses' %>

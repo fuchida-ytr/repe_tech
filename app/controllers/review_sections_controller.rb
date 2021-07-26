@@ -2,17 +2,19 @@ class ReviewSectionsController < ApplicationController
   before_action :set_section, only: %i[create destroy]
   before_action :authenticate_user!
 
-  # 全コース一覧
+    # 今日復習するコースとそのセクション数を表示
   def index
-    @todays_review_list = ReviewSection.get_todays_review_list(current_user.id)
-    # TODO: 以下検証用
-    @review_sections = ReviewSection.where(user_id: current_user.id)
+    @todays_review_list = ReviewSection.get_review_list(current_user.id)
+    # => {course: section_num,}
   end
 
   def create
     @section = Section.find(params[:section_id])
-    @review_section = ReviewSection.create(user_id: current_user.id, section_id: @section.id,
-                                           next_review_date: Date.tomorrow)
+    stage_1_id = ReviewStage.get_stage_1_id(current_user.id)
+    @review_section = ReviewSection.create( user_id: current_user.id, 
+                                            section_id: @section.id,
+                                            review_stage_id: stage_1_id,
+                                            next_review_date: Date.tomorrow)
   end
 
   def destroy
@@ -24,16 +26,28 @@ class ReviewSectionsController < ApplicationController
   # コース別一覧
   def course_index
     @course = Course.find(params[:course_id])
-    @todays_review_list_by_stage = ReviewStage.get_todays_review_list_by_stage(current_user.id, @course)
+    # ステージごとのセクション数を取得
+    @review_list_by_stage = ReviewStage.get_review_list_by_stage(current_user.id, @course)
+    # => {stage: section_num}
+    # TODO: 以下、検証後削除
+    ReviewSection.update_all(next_review_date: Date.current)
+    @review_sections = ReviewSection.where(user_id: current_user.id)
   end
 
   # 特定のステージのランダムなsectionを1つ返す
   def course_show
     @course = Course.find(params[:course_id])
     # all(0), stage1, それ以外の処理
-    @stage = params[:stage_id]
-    # ステージ内の1つsectionを返す
-    @section = ReviewSection.get_todays_review_section(current_user.id, @course, @stage)
+    @stage_num = params[:stage_id]
+    # ステージ内の1つsectionをランダムで返す
+    @todays_review_sections = ReviewSection.get_todays_review_sections(current_user.id, @course, @stage_num)
+    if  @todays_review_sections
+      @section = @todays_review_sections.sample.section
+    else
+      redirect_to course_index_review_sections_path(@course), notice: 'Clear'
+    end
+    # サイドバー用
+    @todays_review_list = ReviewSection.get_review_list(current_user.id)
   end
 
   def correct

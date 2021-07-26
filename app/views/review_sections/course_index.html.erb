@@ -1,11 +1,28 @@
-<h1><%= @course.title %></h1>
+<%= stylesheet_link_tag "review_sections", :media => "all" %>
+<!-- テンプレートとして使用 -->
+<%= stylesheet_link_tag "review_stages", :media => "all" %>
 
-<table class="table">
-  <tr><th>Stage</th><th>section数</th></tr>
-  <% all_section_num = 0 %>
-  <% @todays_review_list_by_stage.each do |stage, section_num| %>
-    <% all_section_num += section_num %>
-    <tr><td><%= link_to stage, course_show_review_sections_path(@course, stage) %></td><td><%= section_num %></td></tr>
-  <% end %>
-  <tr><td><%= link_to 'all', course_show_review_sections_path(@course, "all") %></td><td><%= all_section_num %></td></tr>
-</table>
+<div class="row index-view course-index">
+  <p><%= link_to '復習期間設定', review_stages_path, class: 'review-stage-link' %></p>
+  <h1 class="course-title"><%= @course.title %></h1>
+  <ul class="arrowlist">
+    <% @review_list_by_stage.each do |stage, section_num| %>
+
+    <% if stage.stage != 1 %>
+    <li class="arrow-li">
+      <i class="fas fa-chevron-down"></i>
+      <%= stage.after_days %>日後
+    </li>
+    <% end %>
+
+    <li class="stage-li">
+      <% if section_num > 0 %>
+      <%= link_to "stage #{stage.stage}：#{section_num} 個", course_show_review_sections_path(@course, stage.stage) %>
+      <% else %>
+      <%= "stage #{stage.stage}：#{section_num} 個" %>
+      <% end %>
+
+    </li>
+    <% end %>
+  </ul>
+</div>

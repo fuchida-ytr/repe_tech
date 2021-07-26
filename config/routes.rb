@@ -26,7 +26,15 @@ Rails.application.routes.draw do
 
   # 復習機能関連
   resources :review_stages, only: %i[index create update destroy]
-
+  # コースごとに復習するsectionを表示
+  resource :review_sections, only: [] do
+    get '/courses/:course_id', to: 'review_sections#course_index', as: 'course_index'
+    get '/courses/:course_id/stages/:stage_id', to: 'review_sections#course_show', as: 'course_show'
+  end
+  resources :review_sections, only: [:index] do
+    get '/correct', to: 'review_sections#correct', as: 'correct'
+    get '/incorrect', to: 'review_sections#incorrect', as: 'incorrect'
+  end
   # TODO: 不必要なものは削除、resources等
   # TODO: アルファベット順にソート
 
@@ -46,14 +54,8 @@ Rails.application.routes.draw do
 
   
   
-  resources :review_sections, only: [:index] do
-    get '/correct', to: 'review_sections#correct', as: 'correct'
-    get '/incorrect', to: 'review_sections#incorrect', as: 'incorrect'
-  end
-  resource :review_sections, only: [] do
-    get '/courses/:course_id', to: 'review_sections#course_index', as: 'course_index'
-    get '/courses/:course_id/stages/:stage_id', to: 'review_sections#course_show', as: 'course_show'
-  end
+
+ 
 
   
 

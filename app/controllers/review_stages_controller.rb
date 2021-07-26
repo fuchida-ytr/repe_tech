@@ -1,5 +1,7 @@
 class ReviewStagesController < ApplicationController
   def index
+    # TODO: 検証後、削除
+    # ReviewStage.find_by(stage: nil).delete
     @stages = current_user.review_stages
     @stage = current_user.review_stages.build
     @next_stage = (@stages.maximum(:stage) || 1) + 1
@@ -8,8 +10,12 @@ class ReviewStagesController < ApplicationController
   def create
     @stage = current_user.review_stages.build(review_stage_params)
     # TODO: ステージの値が正しいかチェック
-    @stage.save!
-    redirect_to review_stages_path, notice: '作成しました'
+    if @stage.save
+      flash[:notice] = "作成されました。"
+    else
+      flash[:alert] = "期日が入力されていません。"
+    end
+    redirect_back(fallback_location: root_path)
   end
 
   def update
