@@ -19,6 +19,7 @@
         <li class="arrow-li form-li"><i class="fas fa-chevron-down"></i>
             <%= stage.text_field :after_days, class: 'afterdays-field' %>日後</li>
         <li class="stage-li">stage: <%= @next_stage %>
+            <%= stage.hidden_field :stage, value: @next_stage %>
             <%= stage.submit '作成', class: "create-btn btn btn-outline-primary btn-sm" %></li>
         <% end %>
     </ul>

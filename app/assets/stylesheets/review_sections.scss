@@ -1,3 +1,67 @@
 // Place all the styles related to the ReviewSections controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+body {
+    background: white !important;
+}
+
+.index-view {
+    color: rgba(0, 0, 0, 0.5);
+
+    .section-title {
+        color: lightblue;
+    }
+
+    li {
+        p {
+            margin-bottom: 5px;
+        }
+    }
+
+    .section-num {
+        margin-bottom: 1rem;
+    }
+}
+
+.course-index {
+
+    .course-title {
+        color: lightblue;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .review-stage-link {
+        color: black;
+        float: right;
+        margin-top: 15px;
+    }
+
+    .review-stage-link:hover {
+        color: #FF5722;
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+
+    ul.arrowlist:before {
+        background-color: #bcdee7 !important;
+    }
+
+    .arrowlist {
+        border-radius: 7px;
+    }
+
+    .stage-li a {
+        color: #FF5722;
+    }
+}
+
+.course-show {
+    .stage-title {
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+}

@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    errors: 
+      models: 
+        article: a
+      attributes: 
+        category: a
