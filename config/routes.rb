@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :courses, only: %i[index create show update destroy] do
-    resources :chapters, only: %i[create show]
+    resources :chapters, only: %i[create show update destroy]
   end
   resources :chapters, only: [] do
     resources :sections, only: %i[new create show edit update]
